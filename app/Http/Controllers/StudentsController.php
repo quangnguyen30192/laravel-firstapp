@@ -91,4 +91,11 @@ class StudentsController extends Controller
     {
         return view('pages.contact');
     }
+
+    public function contactStudent($name)
+    {
+        return view('pages.contact-student')->with('name', $name);
+    }
+
+
 }
