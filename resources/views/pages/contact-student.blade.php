@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Hello {{$name}}</h1>
+    <h1>Hello {{$name}} {{$param1}} {{$param2}}</h1>
 </div>
 </body>
 </html>

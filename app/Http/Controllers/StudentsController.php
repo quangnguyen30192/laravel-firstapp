@@ -92,9 +92,9 @@ class StudentsController extends Controller
         return view('pages.contact');
     }
 
-    public function contactStudent($name)
+    public function contactStudent($name, $param1, $param2)
     {
-        return view('pages.contact-student')->with('name', $name);
+        return view('pages.contact-student', compact('name', 'param1', 'param2'));
     }
 
 

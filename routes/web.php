@@ -19,4 +19,4 @@ Route::resource('students', 'StudentsController');
 
 Route::get('/contact', 'StudentsController@contact');
 
-Route::get('/contact/{name}', 'StudentsController@contactStudent');
+Route::get('/contact/{name}/{param1}/{param2}', 'StudentsController@contactStudent');
