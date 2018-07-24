@@ -15,13 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/students/{id}/{name}', function ($id, $name) {
-    return "Hello student with id: ". $id. " - name: ". $name;
-});
+Route::resource('students', 'StudentsController');
 
-
-Route::get('/teachers', array('as' => 'admin.home', function () {
-    $url = route('admin.home');
-
-    return "your url: " . $url;
-}));
+Route::get('/contact', 'StudentsController@contact');
