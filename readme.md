@@ -1,4 +1,4 @@
-#Lavarel MVC
+# Lavarel MVC
 
 * Model: database objects
 
@@ -8,7 +8,7 @@
 
   
 
-#Environment Setup
+# Environment Setup
 
 * Lavarel 5.5 requires PHP 7+
 
@@ -73,7 +73,7 @@
 
   
 
-# Lavarel Basic 
+# Lavarel Basic
 
 ## Framework Structure
 
