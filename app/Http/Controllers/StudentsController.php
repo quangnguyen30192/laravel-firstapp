@@ -89,7 +89,9 @@ class StudentsController extends Controller
 
     public function contact()
     {
-        return view('pages.contact');
+        $people = ['Quang', 'Ba', 'Nhat', 'Nguyen'];
+
+        return view('pages.contact', compact('people'));
     }
 
     public function contactStudent($name, $param1, $param2)
