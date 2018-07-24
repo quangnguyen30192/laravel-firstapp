@@ -84,7 +84,7 @@
 
 * config/database.php: database connection configuration
 
-* `.env`: properties file, get value by `env($key, $default = null)` from helpers.php
+* `.env`: properties file, get value by function`env($key, $default = null)`
 
 * vendor: dependencies installation folder
 
@@ -100,6 +100,8 @@
 
 ## Routes
 
+* routes/web.php
+
 * Routes folder: `view` function mapping to resources/views/**.blade.php
 
   * e.g: route with path variables
@@ -112,13 +114,13 @@
 
 * List all routes:
 
-* ```
+  ```
   php artisan route:list
   ```
 
 * Naming a route
 
-* ```php
+  ```php
   Route::get('/teachers', array('as' => 'admin.home', function () {
       $url = route('admin.home');
   
@@ -136,14 +138,84 @@
 
   * Normal controller
 
-* ```
-  php artisan make:controller StudentsController
-  ```
+    ```php
+    php artisan make:controller StudentsController
+    ```
 
   * Controller for show, update, edit, store,... :
 
-  ```
-  php artisan make:controller --resource StudentsController
+    ```php
+    php artisan make:controller --resource StudentsController
+    ```
+
+* Mapping a route to controller method
+
+* ```php
+  Route::get('/student', 'StudentsController@index');
   ```
 
+* Passing & retriving data
+
+  ```php
+  Route::get('/student/{id}', 'StudentsController@index');
   
+  ....
+  class StudentsController {
+      public function index($id) {
+  
+      }    
+  }
+  ```
+
+* Resource route: generate full REST-API: GET-index, GET-create, GET-show, GET-edit, POST, PUT/PATH,  DELETE methods by just a single line of code.
+
+  ```php
+  Route::resource('/student', 'StudentsController');
+  ```
+
+* Docs: https://laravel.com/docs/5.5/controllers
+
+
+
+## Views
+
+* Blade file: template engine
+
+* Create a custom view and custom method
+
+  * Add a method in the controller
+  * Add a route for that method in `routes/web.php`
+  * Create blade php file in `resources/views`
+
+* Passing data to views
+
+  * web.php
+
+    ```php
+    Route::get('/contact/{name}', 'StudentsController@contactStudent');
+    ```
+
+  * Controller
+
+    ```php
+    public function contactStudent($name)
+    {
+    	return view('pages.contact-student')->with('name', $name);
+    	
+    	# or
+    	# return view('pages.contact-student', compact('name'));
+    }
+    ```
+
+  * View
+
+    ```php
+    <h1>Hello {{$name}}</h1>
+    ```
+
+* Docs: https://laravel.com/docs/5.5/views
+
+# Questions:
+
+- Middleware in folder http
+- There could be duplicated with routes
