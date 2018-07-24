@@ -150,7 +150,7 @@
 
 * Mapping a route to controller method
 
-* ```php
+  ```php
   Route::get('/student', 'StudentsController@index');
   ```
 
@@ -214,6 +214,29 @@
     ```
 
 * Docs: https://laravel.com/docs/5.5/views
+
+
+
+### Create master layout
+
+* create layouts/app.blade.php: @yield('content'), @yield('footer')
+* using: 
+  * @extends('layouts.app') 
+  * @section('content') ... @stop
+
+### Blade template engine
+
+```php
+    @if(count($people))
+        <ul>
+            @foreach($people as $person)
+                <li>{{$person}}</li>
+            @endforeach
+        </ul>
+    @endif
+```
+
+* Docs: https://laravel.com/docs/5.5/blade
 
 # Questions:
 
