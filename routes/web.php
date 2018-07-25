@@ -11,6 +11,8 @@
 |
 */
 
+use App\Students;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,3 +22,10 @@ Route::resource('students', 'StudentsController');
 Route::get('/contact', 'StudentsController@contact');
 
 Route::get('/contact/{name}/{param1}/{param2}', 'StudentsController@contactStudent');
+
+Route::get('/students', function () {
+
+    $students = Students::all();
+
+    return $students;
+});
