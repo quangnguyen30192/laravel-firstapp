@@ -71,7 +71,9 @@
 
 - Virtual Host ?
 
-- Enable access phpmyadmin
+  ## How to fix common errors ?
+
+- Unable to access phpmyadmin ? Enable access phpmyadmin
 
   ```xml
   #etc/extra/httpd-xampp.conf
@@ -85,7 +87,14 @@
   </Directory>
   ```
 
-  
+- Got forbidden access ?
+
+  - sure that  this is not enable
+
+  - ```
+    # Virtual hosts
+    #Include etc/extra/httpd-vhosts.conf
+    ```
 
 # Lavarel Basic
 
@@ -322,13 +331,25 @@ return var_dumps($students); // debug purpose
 
 ## Eloquent
 
+* Create a model:
 
+  * ```
+    php artisan make:model Student
+    ```
+
+* List objects
+
+  * ```
+    Student::all();
+    ```
+
+    
 
 # Questions
 
 - Middleware in folder http
 
-- There could be duplicated with routes
+- There could be duplicated with routes - what would be call if there are 2 routes has same names and same method - get
 
 - Difference between: 
 
@@ -338,6 +359,11 @@ return var_dumps($students); // debug purpose
   ```
 
 - Why do we have `routes` folder with api, channels, console, web ?
+
+- Mysql 8 connection problem:
+
+  - communication link failure
+  - request authentication method unknow to client (cache_rsha2_password)
 
 # Setup project
 
