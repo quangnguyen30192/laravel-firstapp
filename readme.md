@@ -71,6 +71,20 @@
 
 - Virtual Host ?
 
+- Enable access phpmyadmin
+
+  ```xml
+  #etc/extra/httpd-xampp.conf
+  <Directory "/opt/lampp/phpmyadmin">
+      AllowOverride AuthConfig Limit
+      Require all granted
+      Order allow,deny
+      Allow from all
+      #Require local
+      #ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
+  </Directory>
+  ```
+
   
 
 # Lavarel Basic
@@ -177,7 +191,7 @@
 
 
 
-## Views
+## View
 
 * Blade file: template engine
 
@@ -238,7 +252,79 @@
 
 * Docs: https://laravel.com/docs/5.5/blade
 
-# Questions:
+# Database
+
+## Database migration
+
+* Run migration that would call `up` function in every single migration in `database/migrations`
+
+* `migrations` table would keep tracking what migrations have run, then they would not run again.
+
+  * Check migrations status
+
+    ```
+    php aritsan migrate:status
+    ```
+
+* Each migration runs successfully would be create one record in `migrations` table, if it's rollback then that record would be taken out.
+
+* `batch` column in `migrations`: indicates the order of migrations batch executing
+
+* timestamps: create_at, update_at column
+
+* migration (set 'strict' => false in database.php) 
+
+* ```
+  php artisan migrate
+  ```
+
+* create a migration with table creation
+
+* ```
+  php artisan make:migration create_students_table --create="students"
+  ```
+
+* create a migration with table editing
+
+  ```
+  php artisan make:migration add_name_column_in_students_table --table="students"
+  ```
+
+* Docs: https://laravel.com/docs/5.5/migrations
+
+
+
+## Raw SQL queries
+
+### Insert queries
+
+```
+DB:insert('insert into student(f_name, l_name) values(?, ?)', ['Quang', 'Nguyen']);
+```
+
+### Select queries
+
+```php
+$students = DB:select('select * from student where id = ?', [1]);
+
+foreach($students as $student) {
+    
+}
+
+return $students // return json
+
+return var_dumps($students); // debug purpose
+```
+
+* Docs: https://laravel.com/docs/5.2/database
+
+
+
+## Eloquent
+
+
+
+# Questions
 
 - Middleware in folder http
 
@@ -251,9 +337,9 @@
   Route::get('contact', function(){})
   ```
 
-  
+- Why do we have `routes` folder with api, channels, console, web ?
 
-#Setup project
+# Setup project
 
 ```
 composer install
