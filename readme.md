@@ -241,4 +241,29 @@
 # Questions:
 
 - Middleware in folder http
+
 - There could be duplicated with routes
+
+- Difference between: 
+
+  ```php
+  Route::get('/contact', function(){})
+  Route::get('contact', function(){})
+  ```
+
+  
+
+#Setup project
+
+```
+composer install
+
+chmod -R o+rw storage
+
+composer run post-root-package-install
+
+composer run post-create-project-cmd
+
+npm install
+```
+
