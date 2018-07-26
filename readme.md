@@ -289,7 +289,7 @@
 
 * create a migration with table creation
 
-* ```
+  ```
   php artisan make:migration create_students_table --create="students"
   ```
 
@@ -343,27 +343,66 @@ return var_dumps($students); // debug purpose
     Student::all();
     ```
 
+* Find and order
+
+  * ```
+    Student::where('id', 2)->orderBy('id', 'desc')->take(1)->get();
+    ```
+
     
 
 # Questions
 
-- Middleware in folder http
+- **[solved]** What is the role of `middleware` in http folder ?
 
-- There could be duplicated with routes - what would be call if there are 2 routes has same names and same method - get
+  *Middleware is the middle layer between webserver and your service. It's suppose to apply the logic that  you want it happens before or after the request. - like callback function*
 
-- Difference between: 
+  
+
+- **[solved]** There could be duplicated with routes - what would be call if there are 2 routes has same names and same method - get
+
+  *The last delaration will win*
+
+  
+
+- **[solved]** Difference between: 
 
   ```php
   Route::get('/contact', function(){})
   Route::get('contact', function(){})
   ```
+  *They are the same*
 
-- Why do we have `routes` folder with api, channels, console, web ?
+  
 
-- Mysql 8 connection problem:
+- **[solved]** Why do we have `routes` folder with api, channels, console, web ?
+
+  *it's about Soc (Separation of Concerns)*
+
+  *Concerns are the different aspects of software functionality. For instance, the "business logic" of software is a concern, and the interface through which a person uses this logic is another.*
+
+  *The separation of concerns is keeping the code for each of these concerns separate. Changing the interface should not require changing the business logic code, and vice versa.*
+
+  *Model-View-Controller (MVC) design pattern is an excellent example of separating these concerns for better software maintainability.*
+
+  
+
+- **[solved]** Mysql 8 connection problem:
 
   - communication link failure
   - request authentication method unknow to client (cache_rsha2_password)
+
+  *Use mariadb, set no password. Use docker if you can.*
+
+  1. *Install docker for mac*
+  2. *Run commands*
+
+  ```
+  docker rm -v mariadb
+  docker run -p "3306:3306" -e MYSQL_ALLOW_EMPTY_PASSWORD=1 --name mariadb -d mariadb
+  ```
+
+
 
 # Setup project
 
