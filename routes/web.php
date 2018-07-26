@@ -48,11 +48,16 @@ Route::get('/demo-delete', function () {
 });
 
 Route::get('/soft-delete', function () {
-    $student = Students::find(2);
+    $student = Students::find(3);
     $student->delete();
 });
 
 Route::get('/read-soft-delete', function () {
-    $student = Students::withTrashed()->where('id', 2)->get();
+    $student = Students::withTrashed()->get();
+    return $student;
+});
+
+Route::get('/show-only-trashed', function () {
+    $student = Students::onlyTrashed()->get();
     return $student;
 });
