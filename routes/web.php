@@ -46,3 +46,8 @@ Route::get('/demo-delete', function () {
     $student = Students::find(1);
     $student->delete();
 });
+
+Route::get('/soft-delete', function () {
+    $student = Students::find(2);
+    $student->delete();
+});
