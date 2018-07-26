@@ -61,3 +61,13 @@ Route::get('/show-only-trashed', function () {
     $student = Students::onlyTrashed()->get();
     return $student;
 });
+
+Route::get('/restore-trashed', function () {
+    $student = Students::where('id', 3)->restore();
+    return $student;
+});
+
+Route::get('/force-delete', function () {
+    $student = Students::where('id', 3)->forceDelete();
+    return $student;
+});
