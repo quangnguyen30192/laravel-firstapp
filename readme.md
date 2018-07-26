@@ -391,6 +391,9 @@ return var_dumps($students); // debug purpose
 
   - communication link failure
   - request authentication method unknow to client (cache_rsha2_password)
+  - connection refused
+
+  **Way 1 :=> mariadb with docker**
 
   *Use mariadb, set no password. Use docker if you can.*
 
@@ -401,6 +404,14 @@ return var_dumps($students); // debug purpose
   docker rm -v mariadb
   docker run -p "3306:3306" -e MYSQL_ALLOW_EMPTY_PASSWORD=1 --name mariadb -d mariadb
   ```
+
+  lệnh dưới tạo ra 1 container chạy maria db, attach vào port 3306 => nếu e đã cài mysql thì gỡ mysql của e ra để khỏi xung đột port
+
+  MYSQL_ALLOW_EMPTY_PASSWORD=1 => means ko cần password, sử dụng uname = root, password =
+
+  e đưa e lệnh đó vào 1 file shell, sau này chỉ cần chạy docker trước, rồi chạy file shell đó thôi
+
+  **Way 2 :=> Re-install xampp with the version without VM**
 
 
 
