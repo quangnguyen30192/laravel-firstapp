@@ -48,7 +48,7 @@ DB:insert('insert into student(f_name, l_name) values(?, ?)', ['Quang', 'Nguyen'
 
 ## Select queries
 
-```php
+```php+HTML
 $students = DB:select('select * from student where id = ?', [1]);
 
 foreach($students as $student) {
@@ -185,19 +185,19 @@ return var_dumps($students); // debug purpose
 
   * when you call delete() on a row then on that row, delete_at column would be  NOW() - the row would not disappear - if you want to permanently delete it then 
 
-  * ```
+    ```
     $student = Students::where('id', 3)->forceDelete();
     ```
 
   * read soft delete
 
-  * ```
+    ```
     $student = Students::withTrashed()->where('id', 2)->get();
     ```
 
   * show only trashed
 
-  * ```
+    ```
     $student = Students::onlyTrashed()->get();
     ```
 
