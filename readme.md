@@ -279,7 +279,7 @@
   Students::onlyTrashed()->get(); -- would show students whose delete_at column is not null
   ```
 
-  Difference between: `Students::withTrashed()` and `Students::all()` ?
+- **[solved]** Difference between: `Students::withTrashed()` and `Students::all()` ?
 
   * `Students::all()`:  soft deleted rows will automatically be excluded from query results. it doesn't show soft deleted rows.
 
