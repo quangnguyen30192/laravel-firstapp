@@ -29,3 +29,20 @@ Route::get('/students', function () {
 
     return $students;
 });
+
+Route::get('/demo-create', function () {
+    $students = new Students;
+    $students->f_name = "quang";
+    $students->l_name = "nguyen";
+
+    $students->save();
+});
+
+Route::get('/demo-update', function () {
+    Students::where('id', 1)->update(['f_name'=> 'quang-update']);
+});
+
+Route::get('/demo-delete', function () {
+    $student = Students::find(1);
+    $student->delete();
+});
