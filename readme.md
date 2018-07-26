@@ -71,25 +71,25 @@
 
 - Virtual Host ?
 
-  ## How to fix common errors ?
+- How to fix common errors ?
 
-- Unable to access phpmyadmin ? Enable access phpmyadmin
+  - Unable to access phpmyadmin ? Enable access phpmyadmin
 
-  ```xml
-  #etc/extra/httpd-xampp.conf
-  <Directory "/opt/lampp/phpmyadmin">
-      AllowOverride AuthConfig Limit
-      Require all granted
-      Order allow,deny
-      Allow from all
-      #Require local
-      #ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
-  </Directory>
-  ```
+    ```
+    # etc/extra/httpd-xampp.conf
+    <Directory "/opt/lampp/phpmyadmin">
+        AllowOverride AuthConfig Limit
+        Require all granted
+        Order allow,deny
+        Allow from all
+    # Require local
+    # ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
+    </Directory>
+    ```
 
-- Got forbidden access ?
+  - Got forbidden access ?
 
-  - sure that  this is not enable
+    - sure that  this is not enable
 
   - ```
     # Virtual hosts
@@ -261,97 +261,24 @@
 
 * Docs: https://laravel.com/docs/5.5/blade
 
-# Database
-
-## Database migration
-
-* Run migration that would call `up` function in every single migration in `database/migrations`
-
-* `migrations` table would keep tracking what migrations have run, then they would not run again.
-
-  * Check migrations status
-
-    ```
-    php aritsan migrate:status
-    ```
-
-* Each migration runs successfully would be create one record in `migrations` table, if it's rollback then that record would be taken out.
-
-* `batch` column in `migrations`: indicates the order of migrations batch executing
-
-* timestamps: create_at, update_at column
-
-* migration (set 'strict' => false in database.php) 
-
-* ```
-  php artisan migrate
-  ```
-
-* create a migration with table creation
-
-  ```
-  php artisan make:migration create_students_table --create="students"
-  ```
-
-* create a migration with table editing
-
-  ```
-  php artisan make:migration add_name_column_in_students_table --table="students"
-  ```
-
-* Docs: https://laravel.com/docs/5.5/migrations
-
-
-
-## Raw SQL queries
-
-### Insert queries
-
-```
-DB:insert('insert into student(f_name, l_name) values(?, ?)', ['Quang', 'Nguyen']);
-```
-
-### Select queries
-
-```php
-$students = DB:select('select * from student where id = ?', [1]);
-
-foreach($students as $student) {
-    
-}
-
-return $students // return json
-
-return var_dumps($students); // debug purpose
-```
-
-* Docs: https://laravel.com/docs/5.2/database
-
-
-
-## Eloquent
-
-* Create a model:
-
-  * ```
-    php artisan make:model Student
-    ```
-
-* List objects
-
-  * ```
-    Student::all();
-    ```
-
-* Find and order
-
-  * ```
-    Student::where('id', 2)->orderBy('id', 'desc')->take(1)->get();
-    ```
-
-    
-
 # Questions
+
+- Is there a way to import dump data for tables after finishing running all migrations 
+
+- **[solved]** Eloquent soft delete - difference `withTrashed` and `all`
+
+  ```
+  Students::withTrashed()->get(); -- would show students regardless delete_at column is null or not
+  Students::onlyTrashed()->get(); -- would show students whose delete_at column is not null
+  ```
+
+  Difference between: `Students::withTrashed()` and `Students::all()` ?
+
+  * `Students::all()`:  soft deleted rows will automatically be excluded from query results. it doesn't show soft deleted rows.
+
+  - `Students::withTrashed()`: inluded soft deleted rows in the query results
+
+    
 
 - **[solved]** What is the role of `middleware` in http folder ?
 
@@ -413,7 +340,7 @@ return var_dumps($students); // debug purpose
 
   **Way 2 :=> Re-install xampp with the version without VM**
 
-
+  **Way 3 :=> Use previous version of mysql: 5 or 7.2**
 
 # Setup project
 
