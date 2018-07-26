@@ -254,21 +254,23 @@
 
 ### Blade template engine
 
-```php
-    @if(count($people))
-        <ul>
-            @foreach($people as $person)
-                <li>{{$person}}</li>
-            @endforeach
-        </ul>
-    @endif
 ```
+@if(count($people))
+    <ul>
+        @foreach($people as $person)
+            <li>{{$person}}</li>
+        @endforeach
+    </ul>
+@endif
+```
+
+
 
 * Docs: https://laravel.com/docs/5.5/blade
 
 # Questions
 
-- Is there a way to import dump data for tables after finishing running all migrations 
+- Is there any way to import dump data for tables after finishing running all migrations ?
 
 - **[solved]** Eloquent soft delete - difference `withTrashed` and `all`
 
