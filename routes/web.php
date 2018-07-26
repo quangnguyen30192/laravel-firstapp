@@ -51,3 +51,8 @@ Route::get('/soft-delete', function () {
     $student = Students::find(2);
     $student->delete();
 });
+
+Route::get('/read-soft-delete', function () {
+    $student = Students::withTrashed()->where('id', 2)->get();
+    return $student;
+});
