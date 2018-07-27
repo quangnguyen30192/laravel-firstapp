@@ -2,7 +2,7 @@
 
 follow by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-beginners-become-a-master-in-laravel/learn/v4/t/lecture/4872796?start=0)
 
-# Sartuday (28 July)
+## Sartuday (28 July)
 
 Database - Eloquent - Relationship (17)         
 
@@ -42,7 +42,7 @@ Laravel Sending Email/Api (8)
 
 Testing
 
-	- [unit testing](https://medium.com/@jsdecena/crud-unit-testing-in-laravel-5-ac286f592cfd)
+- [unit testing](https://medium.com/@jsdecena/crud-unit-testing-in-laravel-5-ac286f592cfd)
 
 -  https://code.tutsplus.com/tutorials/testing-in-laravel--cms-30465
 - https://laracasts.com/series/phpunit-testing-in-laravel 
@@ -126,7 +126,7 @@ Review
 
     * add into zshrc/bashrc:
 
-    * ```
+    * ```bash
       export PATH="$PATH:$HOME/.composer/vendor/bin"
       ```
 
@@ -140,7 +140,7 @@ Review
 
     * by composer
 
-      ```
+      ```bash
       composer create-project --prefer-dist laravel/laravel firstapp 5.5.28
       ```
 
@@ -153,7 +153,7 @@ Review
 
     * grant access for storage folder after created
 
-    * ```
+    * ```bash
       chmod -R o+wr firstapp/storage
       ```
 
@@ -169,7 +169,7 @@ Review
 
   - Unable to access phpmyadmin ? Enable access phpmyadmin
 
-    ```
+    ```xml
     # etc/extra/httpd-xampp.conf
     <Directory "/opt/lampp/phpmyadmin">
         AllowOverride AuthConfig Limit
@@ -444,7 +444,7 @@ Review
 
 # Setup project
 
-```
+```bash
 composer install
 
 chmod -R o+rw storage

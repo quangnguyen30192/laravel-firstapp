@@ -44,13 +44,13 @@ Generate dummy data
 
 * Create a seed
 
-  ```
+  ```php
   php artisan make:seed UsersDumpData
   ```
 
   UsersDumpData class would be created - add data creation code in `run` function
 
-  ```
+  ```php
   DB::table('users')->insert([
       'name' => 'quang',
       'email' => str_random(10).'@gmail.com',
@@ -259,11 +259,11 @@ E.g: User has one Post
 
 User model
 
-```
-    public function post()
-    {
-        return $this->hasOne('App\Post');
-    }
+```php
+public function post()
+{
+    return $this->hasOne('App\Post');
+}
 ```
 
 Get post via user
@@ -276,7 +276,7 @@ User::find(1)->post;
 
   Post model
 
-* ```
+  ```php
   public function user()
   {
       return $this->belongsTo('App\User');
@@ -295,7 +295,7 @@ E.g: User has many posts
 
 User model
 
-```
+```php
 public function posts()
 {
     return $this->hasMany('App\Post');
@@ -322,7 +322,7 @@ User::find($1)->posts;
 
     User model
 
-    ```
+    ```php
     public function roles()
     {
         return $this->belongsToMany('App\Role');
@@ -337,7 +337,7 @@ User::find($1)->posts;
 
     Role model
 
-    ```
+    ```php
     public function users()
     {
         return $this->belongsToMany('App\User');
