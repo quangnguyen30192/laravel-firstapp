@@ -12,6 +12,7 @@
 */
 
 use App\Students;
+use App\User;
 
 Route::get('/', function () {
     return view('welcome');
@@ -70,4 +71,8 @@ Route::get('/restore-trashed', function () {
 Route::get('/force-delete', function () {
     $student = Students::where('id', 3)->forceDelete();
     return $student;
+});
+
+Route::get('/user/{id}/post', function ($id) {
+    return User::find($id)->post;
 });
