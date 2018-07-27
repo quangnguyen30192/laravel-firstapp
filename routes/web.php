@@ -12,6 +12,7 @@
 */
 
 use App\Post;
+use App\Role;
 use App\Students;
 use App\User;
 
@@ -87,5 +88,14 @@ Route::get('/users/{id}/posts', function ($id) {
     foreach ($posts as $post) {
         echo $post->title . "<br>";
     }
+});
 
+Route::get('/users/{id}/roles', function ($id) {
+    $roles = User::find($id)->roles;
+    return $roles;
+});
+
+Route::get('/roles/{id}/users', function ($id) {
+    $users = Role::find($id)->users;
+    return $users;
 });
