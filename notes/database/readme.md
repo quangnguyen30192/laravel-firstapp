@@ -18,7 +18,7 @@
 
 * migration (set 'strict' => false in database.php) 
 
-* ```
+  ```
   php artisan migrate
   ```
 
@@ -37,6 +37,46 @@
 * Docs: https://laravel.com/docs/5.5/migrations
 
 
+
+# DB seed
+
+Generate dummy data
+
+* Create a seed
+
+  ```
+  php artisan make:seed UsersDumpData
+  ```
+
+  UsersDumpData class would be created - add data creation code in `run` function
+
+  ```
+  DB::table('users')->insert([
+      'name' => 'quang',
+      'email' => str_random(10).'@gmail.com',
+      'password' => bcrypt('secret'),
+  ]);
+  ```
+
+* Add UsersDumpData into DatabaseSeeder
+
+  ```
+  php artisan db:seed --class=UsersDumpData
+  ```
+
+  or
+
+  ```
+  $this->call(UsersDumpData::class); // added in DatabaseSeeder@run
+  ```
+
+* execute DatabaseSeed
+
+  ```
+  php artisan db:seed
+  ```
+
+  
 
 # Raw SQL queries
 
@@ -210,3 +250,104 @@ return var_dumps($students); // debug purpose
     ```
 
 * Docs: https://laravel.com/docs/5.5/eloquent
+
+# Eloquent relationship
+
+## One to one
+
+E.g: User has one Post
+
+User model
+
+```
+    public function post()
+    {
+        return $this->hasOne('App\Post');
+    }
+```
+
+Get post via user
+
+```
+User::find(1)->post;
+```
+
+* Inverse relationship: get user via post
+
+  Post model
+
+* ```
+  public function user()
+  {
+      return $this->belongsTo('App\User');
+  }
+  ```
+
+  Get user via post
+
+  ```
+  Post::find($id)->user;
+  ```
+
+## One to many
+
+E.g: User has many posts
+
+User model
+
+```
+public function posts()
+{
+    return $this->hasMany('App\Post');
+}
+```
+
+Get posts via user
+
+```
+User::find($1)->posts;
+```
+
+# Many to many
+
+* Create join table for users table and roles table: create users roles table
+
+  ```
+  php arisan make:migration create_users_roles_table --create="role_user"
+  ```
+
+* E.g User has many roles
+
+  * find roles of a user
+
+    User model
+
+    ```
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role');
+    }
+    ```
+
+    ```
+    User::find($id)->roles;
+    ```
+
+  - find users by of a role
+
+    Role model
+
+    ```
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
+    ```
+
+    ```
+    Role::find($id)->users;
+    ```
+
+    
+
+  
