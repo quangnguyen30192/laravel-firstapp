@@ -11,6 +11,7 @@
 |
 */
 
+use App\Post;
 use App\Students;
 use App\User;
 
@@ -75,4 +76,8 @@ Route::get('/force-delete', function () {
 
 Route::get('/user/{id}/post', function ($id) {
     return User::find($id)->post;
+});
+
+Route::get('/post/{id}/user', function ($id) {
+    return Post::find($id)->user;
 });
