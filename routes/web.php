@@ -74,10 +74,18 @@ Route::get('/force-delete', function () {
     return $student;
 });
 
-Route::get('/user/{id}/post', function ($id) {
+Route::get('/users/{id}/post', function ($id) {
     return User::find($id)->post;
 });
 
-Route::get('/post/{id}/user', function ($id) {
+Route::get('/posts/{id}/user', function ($id) {
     return Post::find($id)->user;
+});
+
+Route::get('/users/{id}/posts', function ($id) {
+    $posts = User::find($id)->posts;
+    foreach ($posts as $post) {
+        echo $post->title . "<br>";
+    }
+
 });
