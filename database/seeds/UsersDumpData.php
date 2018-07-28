@@ -15,19 +15,22 @@ class UsersDumpData extends Seeder
         DB::table('users')->insert([
             'name' => 'Quang',
             'email' => str_random(10)."@gmail.com",
-            'password' => bcrypt('Secret')
+            'password' => bcrypt('Secret'),
+            'country_id' => 1
         ]);
 
         DB::table('users')->insert([
             'name' => 'Tam',
             'email' => str_random(10)."@gmail.com",
-            'password' => bcrypt('Secret')
+            'password' => bcrypt('Secret'),
+            'country_id' => 1
         ]);
 
         DB::table('users')->insert([
             'name' => 'Minh',
             'email' => str_random(10)."@gmail.com",
-            'password' => bcrypt('Secret')
+            'password' => bcrypt('Secret'),
+            'country_id' => 2,
         ]);
 
 

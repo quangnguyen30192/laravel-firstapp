@@ -11,8 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(UsersDumpData::class);
          $this->call(RolesDumpData::class);
+         $this->call(CountryDumpsData::class);
+         $this->call(UsersDumpData::class);
          $this->call(RoleUserDumpData::class);
+         $this->call(PostsDumpData::class);
     }
 }
