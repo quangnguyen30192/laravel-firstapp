@@ -16,7 +16,9 @@ use App\Photo;
 use App\Post;
 use App\Role;
 use App\Students;
+use App\Tag;
 use App\User;
+use App\Video;
 
 Route::get('/', function () {
     return view('welcome');
@@ -138,4 +140,25 @@ Route::get('/photo/{id}/type', function ($id) {
 
     echo $imageable->imageable_type. "<br/>";
     echo $imageable;
+});
+
+Route::get('/post/{id}/tag', function ($id) {
+    $tags = Post::find($id)->tags;
+    foreach ($tags as $tag) {
+        echo $tag->name . "<br/>";
+    }
+});
+
+Route::get('/video/{id}/tag', function ($id) {
+    $tags = Video::find($id)->tags;
+    foreach ($tags as $tag) {
+        echo $tag->name . "<br/>";
+    }
+});
+
+Route::get('/tag/{id}/video', function ($id) {
+    $tags = Tag::find($id);
+    foreach ($tags->videos as $video) {
+        echo $video->name . "<br/>";
+    }
 });
