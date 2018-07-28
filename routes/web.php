@@ -11,6 +11,7 @@
 |
 */
 
+use App\Address;
 use App\Country;
 use App\Photo;
 use App\Post;
@@ -161,4 +162,11 @@ Route::get('/tag/{id}/video', function ($id) {
     foreach ($tags->videos as $video) {
         echo $video->name . "<br/>";
     }
+});
+
+Route::get('/demo-create-address', function () {
+    $user = User::find(1);
+    $address = new Address;
+    $address->address = "HCM City";
+    $user->addresses()->save($address);
 });
