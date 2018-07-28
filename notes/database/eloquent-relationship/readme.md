@@ -13,7 +13,7 @@ public function post()
 }
 ```
 
-Get post via user
+* Get post via user
 
 ```
 User::find(1)->post;
@@ -32,9 +32,45 @@ User::find(1)->post;
 
   Get user via post
 
-  ```
+  ```php
   Post::find($id)->user;
   ```
+
+- Create a post
+
+- ```php
+  $user->post()->save($post);
+  ```
+
+  Creating and updating need to treat differently. So check the existence of company attribute first.
+
+  ```php
+  $user = User::with('company')->findOrFail(1);
+  if ($user->company === null)
+  {
+      $company = new Company(['name' => 'Test']);
+      $user->company()->save($company);
+  }
+  else
+  {
+      $user->company->update(['name' => 'Test']);
+  }
+  ```
+
+  Note that `hasOne()` does not guarantee that you will have one-to-one relationship, it just telling Eloquent how to create query. It works even you have multiple `Company` refer to same `User`, in such case when you call `$user->company` you will get first `Company` in the result data set from database.
+
+- Update
+
+- ```php
+  $address = Address::whereUserId(1)->first();
+  // or Address::where('user_id', '=', 1)->first();
+  $address->address = "address updated";
+  $address->save();
+  ```
+
+  
+
+
 
 ## One to many
 
@@ -284,4 +320,8 @@ Video:find(1)->tags
 Tags:find(1)->videos
 Tags:find(1)->posts
 ```
+
+
+
+## Docs https://laravel.com/docs/5.5/eloquent-relationships
 

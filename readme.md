@@ -91,7 +91,50 @@ Reference:
     composer info -a laravel/laravel
     ```
 
-- Virtual Host ?
+- Virtual Host: enter the website by `laravelfirstapp.dev` instead of `localhost/laravel-firstapp/public`
+
+  - xamppfiles/etc/httpd.conf: enable `httpd-vhosts.conf`
+
+    ```
+    # Virtual hosts
+    
+    Include etc/extra/httpd-vhosts.conf
+    ```
+
+  - xamppfiles/etc/extra/httpd-vhost.conf
+
+    replace the content with
+
+    ```xml
+    # localhost
+    
+    <VirtualHost *:80>
+        ServerAdmin webmaster@dummy-host2.example.com
+        DocumentRoot "/Applications/XAMPP/xamppfiles/htdocs"
+        ServerName localhost
+        ServerAlias www.localhost
+    </VirtualHost>
+    
+    # laravelfirstapp.dev
+    
+    <VirtualHost *:80>
+        ServerAdmin webmaster@dummy-host2.example.com
+        DocumentRoot "/Applications/XAMPP/xamppfiles/htdocs/laravel-firstapp/public"
+        ServerName laravelfirstapp.dev
+    </VirtualHost>
+    ```
+
+    
+
+  - vim /etc/hosts
+
+    ```
+    127.0.0.1	laravelfistapp.dev
+    ```
+
+    
+
+  
 
 - How to fix common errors ?
 
@@ -108,6 +151,10 @@ Reference:
     # ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
     </Directory>
     ```
+
+  - Your connection is private on Chrome ?
+
+    use FireFox
 
   - Got forbidden access ?
 
@@ -287,7 +334,7 @@ Reference:
 
 # Questions
 
-- **[solved]** Difference between
+- ✅ Difference between
 
 - ```
   // this would drop all the tables and run the migrations
@@ -301,20 +348,20 @@ Reference:
 
   
 
-- **[solved]** Is there any way to import dump data for tables  ?
+- ✅ Is there any way to import dump data for tables  ?
 
   using Seeder
 
   https://toidicode.com/seeding-trong-laravel-18.html
 
-- **[solved]** Eloquent soft delete - difference `withTrashed` and `all`
+- ✅ Eloquent soft delete - difference `withTrashed` and `all`
 
   ```
   Students::withTrashed()->get(); -- would show students regardless delete_at column is null or not
   Students::onlyTrashed()->get(); -- would show students whose delete_at column is not null
   ```
 
-- **[solved]** Difference between: `Students::withTrashed()` and `Students::all()` ?
+- ✅ Difference between: `Students::withTrashed()` and `Students::all()` ?
 
   * `Students::all()`:  soft deleted rows will automatically be excluded from query results. it doesn't show soft deleted rows.
 
@@ -322,19 +369,19 @@ Reference:
 
     
 
-- **[solved]** What is the role of `middleware` in http folder ?
+- ✅ What is the role of `middleware` in http folder ?
 
   *Middleware is the middle layer between webserver and your service. It's suppose to apply the logic that  you want it happens before or after the request. - like callback function*
 
   
 
-- **[solved]** There could be duplicated with routes - what would be call if there are 2 routes has same names and same method - get
+- ✅ There could be duplicated with routes - what would be call if there are 2 routes has same names and same method - get
 
   *The last delaration will win*
 
   
 
-- **[solved]** Difference between: 
+- ✅ Difference between: 
 
   ```php
   Route::get('/contact', function(){})
@@ -344,7 +391,7 @@ Reference:
 
   
 
-- **[solved]** Why do we have `routes` folder with api, channels, console, web ?
+- ✅ Why do we have `routes` folder with api, channels, console, web ?
 
   *it's about Soc (Separation of Concerns)*
 
@@ -356,7 +403,7 @@ Reference:
 
   
 
-- **[solved]** Mysql 8 connection problem:
+- ✅ Mysql 8 connection problem:
 
   - communication link failure
   - request authentication method unknow to client (cache_rsha2_password)

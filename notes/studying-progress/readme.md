@@ -1,16 +1,16 @@
 Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-beginners-become-a-master-in-laravel/learn/v4/t/lecture/4872796?start=0)
 
-## Sartuday (28 July)
+## ✅ Sartuday (28 July)
 
-Database - Eloquent - Relationship (17)         
+✅ Database - Eloquent - Relationship (17)  
 
-Database - tinker (5)
+✅ Database - tinker (5)
 
-Database - Eloquent -  One to One (7)
+✅ Database - Eloquent -  One to One (7)
 
-Database - Eloquent -  One to Many (7)
+✅ Database - Eloquent -  One to Many (7)
 
-Database - Eloquent -  Many to Many (8)
+✅ Database - Eloquent -  Many to Many (8)
 
 ## Sunday (29 July)
 
