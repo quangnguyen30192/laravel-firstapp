@@ -5,9 +5,10 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
 - [Studying progress](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/studying-progress) 
 
 * [Laravel MVC - Basic - Environment](https://github.com/quangnguyen30192/laravel-firstapp)
-* [Database - Eloquent](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database)
+* [Database](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database)
 
-
+  * [Eloquent - ORM](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-orm)
+  * [Eloquent - relationship](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-relationship)
 
 Reference:
 
@@ -33,7 +34,7 @@ Reference:
 
      ```bash
       alias htdocs="cd $USER/.bitnami/stackman/machines/xampp/volumes/root/htdocs"
-      ```
+     ```
 
   * Lavarel Homestead tutorial - [link](https://www.udemy.com/laravel-homestead/learn/v4/overview)
 
