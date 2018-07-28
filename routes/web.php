@@ -99,3 +99,11 @@ Route::get('/roles/{id}/users', function ($id) {
     $users = Role::find($id)->users;
     return $users;
 });
+
+Route::get('/users/{id}/pivot', function ($id) {
+    $roles = User::find($id)->roles;
+
+    foreach ($roles as $role) {
+        echo $role->pivot;
+    }
+});
