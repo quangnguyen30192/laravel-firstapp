@@ -12,6 +12,7 @@
 */
 
 use App\Country;
+use App\Photo;
 use App\Post;
 use App\Role;
 use App\Students;
@@ -114,4 +115,27 @@ Route::get('/country/{id}/post', function ($id) {
     foreach ($posts as $post) {
         echo $post->title;
     }
+});
+
+Route::get('/user/{id}/photo', function ($id) {
+    $photos = User::find($id)->photos;
+
+    foreach ($photos as $photo) {
+        echo $photo->path . "<br/>";
+    }
+});
+
+Route::get('/post/{id}/photo', function ($id) {
+    $photos = Post::find($id)->photos;
+
+    foreach ($photos as $photo) {
+        echo $photo->path . "<br/>";
+    }
+});
+
+Route::get('/photo/{id}/type', function ($id) {
+    $imageable = Photo::find($id);
+
+    echo $imageable->imageable_type. "<br/>";
+    echo $imageable;
 });
