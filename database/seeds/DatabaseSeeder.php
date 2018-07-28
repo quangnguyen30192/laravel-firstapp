@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
          $this->call(UsersDumpData::class);
          $this->call(RoleUserDumpData::class);
          $this->call(PostsDumpData::class);
+         $this->call(PhotosDumpData::class);
     }
 }
