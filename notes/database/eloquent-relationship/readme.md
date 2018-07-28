@@ -171,7 +171,7 @@ public function posts()
 
   - Pivot table has name role_user
 
-  - You can access pivot table via role mode
+  - You can access pivot table via role model
 
     ```php
     $roles = User::find($id)->roles;
