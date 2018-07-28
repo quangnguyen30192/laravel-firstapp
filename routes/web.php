@@ -11,6 +11,7 @@
 |
 */
 
+use App\Country;
 use App\Post;
 use App\Role;
 use App\Students;
@@ -105,5 +106,12 @@ Route::get('/users/{id}/pivot', function ($id) {
 
     foreach ($roles as $role) {
         echo $role->pivot;
+    }
+});
+
+Route::get('/country/{id}/post', function ($id) {
+    $posts = Country::find($id)->posts;
+    foreach ($posts as $post) {
+        echo $post->title;
     }
 });
