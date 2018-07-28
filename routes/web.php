@@ -166,7 +166,6 @@ Route::get('/tag/{id}/video', function ($id) {
 
 Route::get('/demo-create-address', function () {
     $user = User::find(1);
-    $address = new Address;
-    $address->address = "HCM City";
-    $user->addresses()->save($address);
+    $address = new Address(['address' => 'Ha Noi']);
+    $user->address()->save($address);
 });

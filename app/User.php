@@ -47,7 +47,7 @@ class User extends Authenticatable
         return $this->morphMany('App\Photo', 'imageable');
     }
 
-    public function addresses()
+    public function address()
     {
         return $this->hasOne('App\Address');
     }
