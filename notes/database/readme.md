@@ -385,7 +385,17 @@ User::find($1)->posts;
 
 ##  Many to many
 
-* Create join table for users table and roles table: create users roles table
+* Create pivot table (join table) for users table and roles table: 
+
+  ***Convention:*** 
+
+  ​        -> A user has many roles, a role has many users.
+
+  ​	-> you reate roles() method in User model with belongsToMany('App\Role')
+
+  ​        -> table name should be ***role_user***
+
+  
 
   ```
   php arisan make:migration create_users_roles_table --create="role_user"
@@ -400,7 +410,11 @@ User::find($1)->posts;
     ```php
     public function roles()
     {
+        // by default the pivot table is role_user 
         return $this->belongsToMany('App\Role');
+        
+        // if you dont follow the convention then just specify the pivot table name
+        // return $this->belongsToMany('App\Role', 'cus_role_user', 'user_id', 'role_id');    
     }
     ```
 
@@ -425,4 +439,64 @@ User::find($1)->posts;
 
     
 
-  
+* Access pivot table
+
+  * Pivot table has name role_user
+
+  * You can access pivot table via role model
+
+    * ```php
+      $roles = User::find($id)->roles;
+      foreach ($roles as $role) {
+          echo $role->pivot;
+      }
+      ```
+
+      
+
+## Has many through
+
+E.g: 
+
+- a country has many users
+- a users has many posts
+
+How do we get all the posts in a country by a single line of code ?
+
+using has many through.
+
+Country model
+
+```php
+public function posts()
+{
+    return $this->hasManyThrough('App\Post', 'App\User');
+}
+```
+
+
+
+Behind the scene,  it would get all the users via **country_id**, and for every single user it would get all the posts via **user_id**. How does it know country_id and user_id to get ? here by default
+
+```php
+public function posts()
+{
+    // country_id and user_id would be 3rd and 4th parameters by default
+    return $this->hasManyThrough('App\Post', 'App\User', 'country_id', 'user_id');
+    
+    // then the below is enough, Laravel is smart enough to know country_id and user_id
+    return $this->hasManyThrough('App\Post', 'App\User');
+    
+    // if you have another name than country_id or user_id
+    return $this->hasManyThrough('App\Post', 'App\User', 'the_country_id', 'the_user_id');
+}
+```
+
+
+
+then it's easy to get all the posts of a country
+
+```php
+Country::find(1)->posts
+```
+

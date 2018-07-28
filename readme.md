@@ -2,10 +2,16 @@
 
 Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-beginners-become-a-master-in-laravel/learn/v4/t/lecture/4872796?start=0)
 
-- [Studying progress](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/studying-progress): 
+- [Studying progress](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/studying-progress) 
 
 * [Laravel MVC - Basic - Environment](https://github.com/quangnguyen30192/laravel-firstapp)
 * [Database - Eloquent](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database)
+
+
+
+Reference:
+
+- [Awesome laravel](https://github.com/chiraggude/awesome-laravel/)
 
 # Lavarel MVC
 
@@ -273,6 +279,20 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
 * Docs: https://laravel.com/docs/5.5/blade
 
 # Questions
+
+- **[solved]** Difference between
+
+- ```
+  // this would drop all the tables and run the migrations
+  php artisan migrate:fresh
+  ```
+
+  ```
+  // this would rollback for every single table and run the migrations
+  php aritsan migrate:refresh
+  ```
+
+  
 
 - **[solved]** Is there any way to import dump data for tables  ?
 
