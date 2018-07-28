@@ -169,3 +169,10 @@ Route::get('/demo-create-address', function () {
     $address = new Address(['address' => 'Ha Noi']);
     $user->address()->save($address);
 });
+
+Route::get('/demo-update-address', function () {
+    $address = Address::whereUserId(1)->first();
+    $address->address = "address updated";
+    $address->save();
+});
+

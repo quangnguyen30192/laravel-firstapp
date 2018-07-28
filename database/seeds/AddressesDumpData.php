@@ -12,12 +12,12 @@ class AddressesDumpData extends Seeder
      */
     public function run()
     {
-        $this->createAddreses(1, '231 Le Duan, Da Nang');
-        $this->createAddreses(2, '12 Hai Phong, Da Nang');
-        $this->createAddreses(3, '98 Tran Phu, Da Nang');
+        $this->createAddress(1, '231 Le Duan, Da Nang');
+        $this->createAddress(2, '12 Hai Phong, Da Nang');
+        $this->createAddress(3, '98 Tran Phu, Da Nang');
     }
 
-    private function createAddreses($userId, $addressName)
+    private function createAddress($userId, $addressName)
     {
         $address = new Address;
         $address->user_id = $userId;
