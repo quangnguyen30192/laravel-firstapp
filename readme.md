@@ -31,7 +31,7 @@ Reference:
 
   * **XAMPP**: enable htdocs folder visible: Volumes -> Mount
 
-    * ```bash
+     ```bash
       alias htdocs="cd $USER/.bitnami/stackman/machines/xampp/volumes/root/htdocs"
       ```
 
@@ -47,7 +47,7 @@ Reference:
 
     * add into zshrc/bashrc:
 
-    * ```bash
+      ```bash
       export PATH="$PATH:$HOME/.composer/vendor/bin"
       ```
 
@@ -74,13 +74,13 @@ Reference:
 
     * grant access for storage folder after created
 
-    * ```bash
+      ```bash
       chmod -R o+wr firstapp/storage
       ```
 
   * show versions laravel/laravel from repository
 
-  * ```bash
+    ```bash
     composer info -a laravel/laravel
     ```
 
