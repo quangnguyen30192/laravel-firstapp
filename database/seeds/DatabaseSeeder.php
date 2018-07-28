@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
          $this->call(TagsDumpData::class);
          $this->call(VideosDumpData::class);
          $this->call(TaggablesDumpData::class);
+         $this->call(AddressesDumpData::class);
     }
 }
