@@ -1,4 +1,4 @@
-## Eloquent relationship
+## 	Eloquent relationship
 
 ## One to one
 
@@ -182,7 +182,7 @@ E.g:
 - a user has many photos
 - a title has many photos
 
-That's called polymorphic relation
+That's called polymorphic relation - one  to many (one post or one user has many photos)
 
 Instead of Photo table has 3 column_ids representing primary key of Post, User, Title. We just need to have 2 column 
 
@@ -191,13 +191,15 @@ Instead of Photo table has 3 column_ids representing primary key of Post, User, 
 
 then later on if we have that Country has many photos, then we dont need to create more columns. 
 
-
+### Eloquent model configure
 
 Photo model
 
 ```php
 public function imageable() // refer to imageable_id, imageable_type
 {
+ // We do this because photo_id is from Photo table (primary key of Photo table) 
+ // and it provides the value for imagable_id - imagable type - Photo model is morphed
     return $this->morphTo();
 }
 ```
@@ -207,7 +209,8 @@ User and Post model
 ```php
 public function photos()
 {
-    return $this->morphMany('App\Photo', 'imageable');
+// We do this because primary key of User or Posts is represented by imageable_id
+    return $this->morphMany('App\Photo', 'imageable'); 
 }
 ```
 
@@ -222,9 +225,63 @@ User::find($userId)->photos
 
 Get Post or User via Photos (inverse)
 
-```
+```php
 $imageable = Photo::find($id);
 echo $imageable->imageable_type. "<br/>";
 echo $imageable;
+```
+
+
+
+## Polymorphic relation - many to many
+
+E.g: 
+
+* Post has many Tags (Post table.= post_id, name)
+* Video has many Tags (Video table = video_id, name)
+* Tag has many Videos, Posts (Tag table = tag_id, name)
+* Taggable table: pivot table - include: tag_id, taggable_id (post_id or video_id), taggable_type (Post or Video).
+
+That's called polymorphic relation - may  to many (many posts or many users have many tags and vice versa)
+
+### Eloquent model configure
+
+Tag model
+
+```php
+// we do this because tag_id is from Tag table (primary key of Tag table)
+// and it provides the value for taggable_id - taggable_type - Tag model is morphed
+public function posts()
+{
+    return $this->morphedByMany('App\Tag', 'taggable');
+}
+
+public function videos()
+{
+    return $this->morphedByMany('App\Video', 'taggable');
+}
+```
+
+
+
+Post and Video model
+
+```php
+public function tags()
+{
+    // We do this because primary key of Post or Video is represented by taggable_id
+    return $this->morphToMany('App\Tag', 'taggable');
+}
+```
+
+
+
+Get tags by a post/video and vice versa
+
+```
+Post::find(1)->tags
+Video:find(1)->tags
+Tags:find(1)->videos
+Tags:find(1)->posts
 ```
 

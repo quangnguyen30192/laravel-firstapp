@@ -9,10 +9,16 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
 
   * [Eloquent - ORM](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-orm)
   * [Eloquent - relationship](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-relationship)
+  * [Database - Tinker](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/tinker) - use Php Storm database (support for Ultimate version only) or seeders instead
 
 Reference:
 
 - [Awesome laravel](https://github.com/chiraggude/awesome-laravel/)
+- [Collect.js](https://github.com/ecrmnn/collect.js/)
+- [Laravel 5.5 - Collection](https://github.com/laravel/framework/blob/5.5/src/Illuminate/Support/Collection.php#L394)
+- [Laravel best practice](http://www.laravelbestpractices.com/) 
+
+
 
 # Lavarel MVC
 

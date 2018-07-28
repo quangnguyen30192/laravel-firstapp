@@ -67,12 +67,6 @@ Generate dummy data
 * Add UsersDumpData into DatabaseSeeder
 
   ```
-  php artisan db:seed --class=UsersDumpData
-  ```
-
-  or
-
-  ```
   $this->call(UsersDumpData::class); // added in DatabaseSeeder@run
   ```
 
