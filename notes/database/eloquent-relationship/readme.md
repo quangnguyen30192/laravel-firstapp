@@ -15,11 +15,11 @@ public function post()
 
 * Get post via user
 
-```
-User::find(1)->post;
-```
+  ```
+  User::find(1)->post;
+  ```
 
-- Inverse relationship: get user via post
+* Inverse relationship: get user via post
 
   Post model
 
@@ -36,9 +36,9 @@ User::find(1)->post;
   Post::find($id)->user;
   ```
 
-- Create a post
+* Create a post
 
-- ```php
+  ```php
   $user->post()->save($post);
   ```
 
@@ -61,7 +61,7 @@ User::find(1)->post;
 
 - Update
 
-- ```php
+  ```php
   $address = Address::whereUserId(1)->first();
   // or Address::where('user_id', '=', 1)->first();
   $address->address = "address updated";
@@ -85,11 +85,31 @@ public function posts()
 }
 ```
 
-Get posts via user
+- Get posts via user
 
-```
-User::find($1)->posts;
-```
+  ```
+  User::find($1)->posts;
+  ```
+
+- Create a post
+
+  ```php
+  $post = new Post(['title' => 'I love laravel']);
+  $user->posts()->save($post);
+  ```
+
+- Update a post
+
+  ```php
+  $user->posts()->whereId(1)->update(['title' => 'I love laravel']);
+  // remember to configure mass massignment on Post
+  ```
+
+- Delete a post
+
+  ```php
+  $user->posts()->whereId(1)->delete();
+  ```
 
 ## Many to many
 
@@ -151,16 +171,16 @@ User::find($1)->posts;
 
   - Pivot table has name role_user
 
-  - You can access pivot table via role model
+  - You can access pivot table via role mode
 
-    - ```php
-      $roles = User::find($id)->roles;
-      foreach ($roles as $role) {
-          echo $role->pivot;
-      }
-      ```
+    ```php
+    $roles = User::find($id)->roles;
+    foreach ($roles as $role) {
+        echo $role->pivot;
+    }
+    ```
 
-      
+    
 
 ## Has many through
 

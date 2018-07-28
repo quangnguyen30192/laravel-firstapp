@@ -165,6 +165,26 @@ Reference:
     #Include etc/extra/httpd-vhosts.conf
     ```
 
+# For debug
+
+```
+return $var; //json output
+```
+
+```php
+var_dumps($var); 
+```
+
+```php
+dd($var);
+```
+
+```php
+dump($var);
+```
+
+
+
 # Lavarel Basic
 
 ## Framework Structure
