@@ -176,3 +176,11 @@ Route::get('/demo-update-address', function () {
     $address->save();
 });
 
+Route::get('/check-role', function () {
+    $user = User::find(1);
+    if ($user->has('roles')) {
+        foreach ($user->roles as $role) {
+            echo $role->name. "<br/>";
+        }
+    }
+});
