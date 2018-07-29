@@ -3,11 +3,14 @@
 @section('content')
     <h1>Welcome to post creation page</h1>
 
-    <form action="{{route('posts.store')}}" method="POST">
-        <input type="text" name="title" id="Enter title">
-        <input type="submit" name="submit">
-        {{ csrf_field() }}
-    </form>
+    {!! Form::open(['method' => 'POST', 'action' => 'PostController@store']) !!}
+        <div class="form-group">
+            {!! Form::label('title', 'Title: ', ['class' => 'control-label']) !!}
+            {!! Form::text('title', null, ['class' => 'form-control']) !!}
+            {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
+        </div>
+
+    {!! Form::close() !!}
 
 @endsection
 

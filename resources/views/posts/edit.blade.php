@@ -3,17 +3,19 @@
 @section('content')
     <h1>Welcome to post edit page</h1>
 
-    <form action="{{route('posts.update', $post->id)}}" method="POST">
-        <input type="hidden" name="_method" value="PUT">
-        <input type="text" name="title" id="Enter title" value="{{$post->title}}">
-        <input type="submit" name="submit">
-        {{ csrf_field() }}
-    </form>
+{{--    {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}--}}
+    {{--or--}}
+    {!! Form::model($post, ['action' => ['PostController@update', $post->id], 'method' => 'PUT']) !!}
+        <div class="form-group">
+            {!! Form::label('title', 'Title: ', ['class' => 'control-label']) !!}
+            {!! Form::text('title', null, ['class' => 'form-control']) !!}
+            {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+        </div>
+    {!! Form::close() !!}
 
-    <form action="{{route('posts.destroy', $post->id)}}" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="delete">
-    </form>
+    {!! Form::model($post, ['action' => ['PostController@destroy', $post->id],  'method' => 'DELETE']) !!}
+    {!! Form::submit('Delete', ['class' => 'form-control']) !!}
+    {!! Form::close() !!}
 
 @endsection
 
