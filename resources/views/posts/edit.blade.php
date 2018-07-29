@@ -10,6 +10,11 @@
         {{ csrf_field() }}
     </form>
 
+    <form action="{{route('posts.destroy', $post->id)}}" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="delete">
+    </form>
+
 @endsection
 
 @section('footer')
