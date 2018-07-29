@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 
 class Post extends Model
 {
@@ -24,5 +25,10 @@ class Post extends Model
     public static function scopeLatestQuangPost($query)
     {
         return $query->whereUserId(1)->orderBy('id', 'desc')->get();
+    }
+
+    public function getImgFileAttribute($value)
+    {
+        return Config::get('constants.image_folder') . $value;
     }
 }
