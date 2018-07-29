@@ -12,7 +12,7 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
 
 ✅ Database - Eloquent -  Many to Many (8)
 
-## Sunday (29 July)
+## ✅ Sunday (29 July)
 
 ✅  Database - Eloquent -  Polymorphic Relationship CRUD (8)
 
@@ -20,13 +20,13 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
 
 ✅  Forms and validation (11)
 
-Forms - package and validation (8)
+✅ Forms - package and validation (8)
 
-Databases - some more model manipulation  (5)
+✅ Databases - some more model manipulation  (5)
 
 ## Monday (30 July)
 
-Forms - Uploading files (5)
+✅ Forms - Uploading files (5)
 
 Forms - Login (6)
 
