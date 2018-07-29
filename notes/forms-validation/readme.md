@@ -142,3 +142,112 @@ Ngoài cách trên thì hacker có thể thực thi được CSRF qua các HTML 
 - Chúng ta có thể thực hiện xây dựng captcha cho các yêu cầu quan trọng.
 - Sử dụng CSRF token để có thể xác nhận request hợp lệ ([xem csrf token trên PHP](https://github.com/thanhtaivtt/csrf-token)).
 - Đối với các hệ thống quan trọng thì chúng ta nên thiết lập sẵn các ip được cho phép.
+
+
+
+## Package installation - LaravelCollective
+
+https://laravelcollective.com/docs/5.4/html
+
+```
+composer require "laravelcollective/html":"^5.4.0"
+```
+
+and do follow the next steps in docs
+
+Perferct builtin form package should be used. It make our life easier.
+
+```php
+// {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
+{!! Form::model($post, ['action' => ['PostController@update', $post->id], 'method' => 'PUT']) !!}
+    <div class="form-group">
+        {!! Form::label('title', 'Title: ', ['class' => 'control-label']) !!}
+        {!! Form::text('title', null, ['class' => 'form-control']) !!}
+        {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+    </div>
+{!! Form::close() !!}
+```
+
+
+
+## Validation
+
+add validation in Controller method
+
+```php
+$this->validate($request, [
+   'title' => 'required|max:5',
+]);
+```
+
+
+
+configure in web.php to provide authentication fearures of middleware
+
+```php
+Route::group(['middleware' => 'web'], function () {
+    Route::resource('/posts', 'PostController');
+});
+```
+
+
+
+show errors in the blade file
+
+```php
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+```
+
+
+
+### Advance validation
+
+create a request to handler submitting parameters
+
+```
+php artisan make:request CreatePostRequest
+```
+
+
+
+Replace `Request` by `CreatePostRequest`
+
+```php
+public function store(CreatePostRequest $request)
+{
+    $post = new Post;
+    $post->title = $request->title;
+    $post->user_id = 1;
+    $post->content = 'test';
+    $post->save();
+
+    return redirect(route('posts.index'));
+}
+```
+
+
+
+Put your validation rules in `CreatePostRequest@rules` and let `CreatesPostRequest@authorize` return true to activate the validation
+
+```php
+public function authorize()
+{
+    return true;
+}
+
+public function rules()
+{
+    return [
+        'title' => 'required|max:5'
+    ];
+}
+```
+

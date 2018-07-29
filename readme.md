@@ -10,7 +10,7 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
   * [Eloquent - ORM](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-orm)
   * [Eloquent - relationship](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-relationship)
   * [Database - Tinker](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/tinker) - use Php Storm database (support for Ultimate version only) or seeders instead
-  * [Forms and validation](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/forms-validation)
+  * [Forms and validation](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/forms-validation) - package installation LaravelCollective
 
 Reference:
 
@@ -393,6 +393,8 @@ dump($var);
 - ✅ What is the role of `middleware` in http folder ?
 
   *Middleware is the middle layer between webserver and your service. It's suppose to apply the logic that  you want it happens before or after the request. - like callback function*
+
+  *it's about security features*
 
   
 
