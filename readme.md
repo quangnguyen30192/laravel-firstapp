@@ -334,7 +334,7 @@ dump($var);
 * create layouts/app.blade.php: @yield('content'), @yield('footer')
 * using: 
   * @extends('layouts.app') 
-  * @section('content') ... @stop
+  * @section('content') ... @endsection
 
 ### Blade template engine
 

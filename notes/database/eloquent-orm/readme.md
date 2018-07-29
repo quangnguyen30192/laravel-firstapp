@@ -112,6 +112,8 @@ $fillable cho phép thiết lập các cột trong một bảng có thể sử d
 $user = User::create(Input::all());
 // Hoặc
 $user = new User(Input::al());
+// Hoặc
+$user = new User(['name' => 'quang', 'password' => bcrypt('Secret', 'email' => 'quangbnn@gmail.com')])
 ```
 
 Khi đó nếu kẻ xấu gửi thêm user_type là trường không có trong $fillable, các câu lệnh trên sẽ phát sinh một exception ngay. Như vậy lỗ hổng trong Mass Assignment đã được xử lý.
@@ -144,6 +146,11 @@ Khi đó nếu kẻ xấu có tình chèn thêm user_type = ‘admin’ thì đo
   $student->lastname = "nguyen";
   
   $student.save();
+  
+  // or 
+      
+  Student::create(['firstname' => 'quang', 'lastname' => 'nguyen']);
+  Student::find(1)->update(['firstname' => 'minh']);
   ```
 
   

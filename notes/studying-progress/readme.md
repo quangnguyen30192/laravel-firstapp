@@ -14,11 +14,11 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
 
 ## Sunday (29 July)
 
-Database - Eloquent -  Polymorphic Relationship CRUD (8)
+✅  Database - Eloquent -  Polymorphic Relationship CRUD (8)
 
-Database - Eloquent -  Polymorphic Many to Many Relationship CRUD (6)
+✅  Database - Eloquent -  Polymorphic Many to Many Relationship CRUD (6)
 
-Forms and validation (11)
+✅  Forms and validation (11)
 
 Forms - package and validation (8)
 
