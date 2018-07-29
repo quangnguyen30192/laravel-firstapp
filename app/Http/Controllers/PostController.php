@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -33,9 +34,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
-        echo $request->get('title');
-        echo $request->title;
+        Post::create($request->all());
+
+        // or
+
+//        $post = new Post;
+//        $post->title = $request->title;
+//        $post->save();
     }
 
     /**
