@@ -14,6 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
+        $posts = Post::whereUserId(1)->get();
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -34,13 +36,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        Post::create($request->all());
+        $post = new Post;
+        $post->title = $request->title;
+        $post->user_id = 1;
+        $post->content = 'test';
+        $post->save();
 
-        // or
-
-//        $post = new Post;
-//        $post->title = $request->title;
-//        $post->save();
+        return redirect(route('posts.index'));
     }
 
     /**
