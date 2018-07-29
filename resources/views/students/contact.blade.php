@@ -11,8 +11,8 @@
         </ul>
     @endif
 
-@stop
+@endsection
 
 @section('footer')
     <h3>I'm footer</h3>
-@stop
+@endsection
