@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class StudentsController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,8 +29,7 @@ class StudentsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,8 +40,7 @@ class StudentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -53,8 +51,7 @@ class StudentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -65,9 +62,8 @@ class StudentsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -78,26 +74,11 @@ class StudentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
     }
-
-    public function contact()
-    {
-        $people = ['Quang', 'Ba', 'Nhat', 'Nguyen'];
-
-        return view('students.contact', compact('people'));
-    }
-
-    public function contactStudent($name, $param1, $param2)
-    {
-        return view('students.contact-student', compact('name', 'param1', 'param2'));
-    }
-
-
 }
