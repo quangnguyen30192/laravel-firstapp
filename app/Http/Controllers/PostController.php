@@ -36,6 +36,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+           'title' => 'required|max:5',
+        ]);
+
         $post = new Post;
         $post->title = $request->title;
         $post->user_id = 1;
