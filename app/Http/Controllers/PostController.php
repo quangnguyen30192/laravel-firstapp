@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::whereUserId(1)->get();
+        $posts = Post::latestQuangPost();
         return view('posts.index', compact('posts'));
     }
 
