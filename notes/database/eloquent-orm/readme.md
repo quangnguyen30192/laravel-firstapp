@@ -65,6 +65,14 @@ if (count($users)){
 
 
 
+## Get latest
+
+```php
+Post::latest();
+```
+
+
+
 ## Create data with configuring mass assignment:
 
 **Mass Assignment là gì?** Mass Assignment xuất phát từ ngôn ngữ Ruby on Rails, là tính năng cho phép lập trình một cách tự động gán các tham số của một HTTP request vào các biến hoặc đối tượng trong lập trình. Ví dụ: chúng ta có một form đăng ký người dùng như sau, các tên trường nhập liệu trùng với tên cột trong bảng users trong CSDL.
@@ -222,4 +230,52 @@ Khi đó nếu kẻ xấu có tình chèn thêm user_type = ‘admin’ thì đo
 
 - Docs: https://laravel.com/docs/5.5/eloquent
 
-# 
+## Scope Query
+
+Customize your query that is defined common sets of constraints that you may easily re-use throughout your application
+
+E.g we have long query
+
+```php
+$users = App\User::popular()->active()->orderBy('created_at', 'desc')->get();
+```
+
+
+
+with scope query we can reduce amount line of code
+
+in User model
+
+```php
+public function scopeLatestActive($query)
+{
+    return $query->active()->orderBy('created_at', 'desc')->get();;
+}
+```
+
+
+
+and now use it
+
+```php
+$users = App\User::popular()->latestActive();
+```
+
+
+
+### Dynamic scope query - with parameters
+
+```php
+public function scopeOfType($query, $type)
+{
+    return $query->where('type', $type)->get();
+}
+```
+
+and now use it
+
+```
+$users = App\User::ofType('admin');
+```
+
+###  Docs: https://laravel.com/docs/5.5/eloquent#query-scopes

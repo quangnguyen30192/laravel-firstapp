@@ -251,3 +251,76 @@ public function rules()
 }
 ```
 
+
+
+## Docs: https://laravel.com/docs/5.5/eloquent-mutators
+
+## Date
+
+```
+$date = new DateTime();
+$date->format('m.d.Y');
+
+Carbon::now()->addDays(10)->diffForHumans();
+
+Carbon::now()->subMonth(5)->diffForHumans();
+
+Carbon::now()->yesterday()->diffForHumans();
+```
+
+
+
+## Accessors
+
+After pulling out from the database, the accessor would format the value of the attritbue before it comes to the client
+
+E.g in User model
+
+```php
+public function getNameAttribute($value)
+{
+    return strtoupper($value); 
+}
+```
+
+
+
+The name of the method should follow the convention **get**xxx**Attribute** (xxx is the attritube following camelcase: eg the attribute is first_name then method is getFirstNameAttritbute)
+
+
+
+```php
+// whenever we call $user->name would return the uppercase of the user name
+$user->name; // QUANG not quang
+```
+
+
+
+## Mutators
+
+The mutator would format the value of the attritube before saving into the database.
+
+E.g in User model
+
+```php
+public function setNameAttribute($value)
+{
+    $this->attributes['name'] = strtoupper($value);
+}
+```
+
+
+
+The name of the method should follow the convention setxxxAttribute (xxx is the attribute - the same as accessors)
+
+```php
+// whenever the user is saved then it triggers setNameAttribute first, format the value and then goes to the database
+
+$user = User:find(1);
+$user->name = "quang-nguyen";
+$user->save(); // the name now would be "QUANG-NGUYEN" in the database. 
+```
+
+
+
+## Docs: https://laravel.com/docs/5.5/validation

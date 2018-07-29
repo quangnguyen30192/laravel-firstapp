@@ -7,10 +7,10 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
 * [Laravel MVC - Basic - Environment](https://github.com/quangnguyen30192/laravel-firstapp)
 * [Database](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database)
 
-  * [Eloquent - ORM](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-orm)
+  * [Eloquent - ORM, Scope query](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-orm)
   * [Eloquent - relationship](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-relationship)
   * [Database - Tinker](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/tinker) - use Php Storm database (support for Ultimate version only) or seeders instead
-  * [Forms and validation](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/forms-validation) - package installation LaravelCollective
+  * [Forms and validation - package installation LaravelCollective - Date - Mutators - Accessors](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/forms-validation) 
 
 Reference:
 
