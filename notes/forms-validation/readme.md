@@ -66,6 +66,16 @@ redirect(route('posts.index'));
 
 
 
+## Using PUT method in form html
+
+Forms only support GET and POST, in order to use PUT method then put the below in your form
+
+```html
+<input type="hidden" name="_method" value="PUT">
+```
+
+
+
 ## CSRF
 
 **CSRF** là viết tắt của từ "**C**ross-**S**ite **R**equest **F**orgery", đây là một kỹ thuật tấn công sử dụng quyền chứng thực của người dùng để thực hiện các hành động trên một website khác.
