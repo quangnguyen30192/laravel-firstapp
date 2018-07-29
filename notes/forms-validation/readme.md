@@ -251,9 +251,7 @@ public function rules()
 }
 ```
 
-
-
-## Docs: https://laravel.com/docs/5.5/eloquent-mutators
+### Docs: https://laravel.com/docs/5.5/validation
 
 ## Date
 
@@ -321,6 +319,43 @@ $user->name = "quang-nguyen";
 $user->save(); // the name now would be "QUANG-NGUYEN" in the database. 
 ```
 
+### Docs: https://laravel.com/docs/5.5/eloquent-mutators
 
 
-## Docs: https://laravel.com/docs/5.5/validation
+
+## Forms Uploading files
+
+* Enabling file upload into form: add `enctype="multipart/form-data"` into form by adding `'files' => true`
+
+  ```php
+  {!! Form::open(['method' => 'POST', 'action' => 'PostController@store', 'files' => true]) !!}
+          <div class="form-group">
+              {!! Form::file('file', ['class' => 'form-control']) !!}
+          </div>
+  {!! Form::close() !!}
+  ```
+
+* Get the file
+
+  ```php
+  $file = $request->file('file');
+  ```
+
+Move a file to a folder and get it later.
+
+```
+$name = $file->getClientOriginalName();
+$file->move('images', $name); // would move img file into images folder - that would be created in public folder beforehand with `chmod -R o+wr images` 
+
+```
+
+
+
+Display img file
+
+```php
+// $img_file = "images/test.jpg"
+<img src="{{asset($post->img_file)}}">
+```
+
+- Docs: https://laravel.com/docs/5.5/requests#files
