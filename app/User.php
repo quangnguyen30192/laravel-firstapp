@@ -51,4 +51,15 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Address');
     }
+
+    public function getNameAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtoupper($value);
+    }
+
 }
