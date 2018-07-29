@@ -6,7 +6,9 @@
     @if(count($posts))
         <ul>
             @foreach($posts as $post)
-                <li><a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></li>
+                <li><a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a>
+                    <span>  - <a href="{{route('posts.edit', $post->id)}}">edit</a></span>
+                </li>
             @endforeach
         </ul>
     @endif
