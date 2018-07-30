@@ -201,7 +201,7 @@ dd($var);
 dump($var);
 ```
 
-
+* [Install xdebug](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/install-xdebug)
 
 # Lavarel Basic
 
