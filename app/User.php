@@ -62,4 +62,7 @@ class User extends Authenticatable
         $this->attributes['name'] = strtoupper($value);
     }
 
+    public function isAdmin() {
+        return $this->roles()->whereName('Administrator')->exists();
+    }
 }

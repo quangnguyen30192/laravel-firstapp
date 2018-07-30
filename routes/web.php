@@ -14,6 +14,7 @@
 
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 Route::group(['middleware' => 'web'], function () {
     Route::resource('/posts', 'PostController');
@@ -50,3 +51,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/admin/user/roles', ['middleware' => 'role', function () {
+    return "Middleware role";
+}]);
+
+Route::get('/admin/user/roles', ['middleware' => ['role', 'auth', 'web'], function () {
+    return "Middleware role";
+}]);
+
+Route::get('/admin', 'AdminController@index');
