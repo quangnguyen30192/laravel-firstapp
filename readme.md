@@ -5,6 +5,7 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
 - [Studying progress](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/studying-progress) 
 
 * [Laravel MVC - Basic - Environment](https://github.com/quangnguyen30192/laravel-firstapp)
+* [Install xdebug](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/install-xdebug)
 * [Database](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database)
 
   * [Eloquent - ORM, Scope query](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-orm)
