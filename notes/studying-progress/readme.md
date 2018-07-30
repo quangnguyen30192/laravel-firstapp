@@ -24,15 +24,15 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
 
 ✅ Databases - some more model manipulation  (5)
 
-## Monday (30 July)
+## ✅ Monday (30 July)
 
 ✅ Forms - Uploading files (5)
 
-Forms - Login (6)
+✅ Forms - Login (6)
 
-Middleware - Security/Protection (7)
+✅ Middleware - Security/Protection (7)
 
-Laravel Sessions (4)
+✅ Laravel Sessions (4)
 
 ## Tuesday (31 July)
 

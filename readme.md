@@ -11,7 +11,9 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
   * [Eloquent - ORM, Scope query](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-orm)
   * [Eloquent - relationship](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-relationship)
   * [Database - Tinker](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/tinker) - use Php Storm database (support for Ultimate version only) or seeders instead
-  * [Forms and validation - package installation LaravelCollective - Date - Mutators - Accessors](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/forms-validation) 
+  * [Forms and validation - package installation LaravelCollective - Date - Mutators - Accessors - Uploading files](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/forms-validation) 
+  * [Form login - Middleware - Laravel Session](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/form-login-middleware-session)
+  * [Email - Application - Dev](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/email-application-dev) 
 * [Questions](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/questions)
 
 Reference:
@@ -380,5 +382,14 @@ composer run post-root-package-install
 composer run post-create-project-cmd
 
 npm install
+```
+
+
+
+# Maintainance and live mode
+
+```
+php artisan down
+php artisan up
 ```
 
