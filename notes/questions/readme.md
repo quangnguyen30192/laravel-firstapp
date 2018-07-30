@@ -1,6 +1,6 @@
 ## Questions
 
-- **Vấn đề N + 1 và Eager Loading**
+- ✅ **Vấn đề N + 1 và Eager Loading**
 
   Hãy giả sử bạn gặp một vấn đề như thế này:
 
@@ -58,7 +58,7 @@
 
   Hãy luôn cố gắng dùng Eager Loading những lúc có thể nhé. Laravel cung cấp cho chúng ta một hệ thống Eager Loading rất hoàn hảo và mạnh mẽ. Bên cạnh việc load một quan hệ như trên, ta còn có thể **load một lúc nhiều quan hệ (Multiple Relationships Eager Loading)**, **load quan hệ chồng nhau (Nested Eager Loading)**, hay **thực hiện Eager Loading có kèm điều kiện** ...
 
-- Thin/Fat controller
+- ✅ Thin/Fat controller
 
   - https://matthewdaly.co.uk/blog/2018/02/18/put-your-laravel-controllers-on-a-diet/
   - https://laracasts.com/discuss/channels/laravel/model-function-to-make-controller-skinny
