@@ -12,15 +12,31 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
   * [Eloquent - relationship](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/eloquent-relationship)
   * [Database - Tinker](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/database/tinker) - use Php Storm database (support for Ultimate version only) or seeders instead
   * [Forms and validation - package installation LaravelCollective - Date - Mutators - Accessors](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/forms-validation) 
+* [Questions](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/questions)
 
 Reference:
 
 - [Awesome laravel](https://github.com/chiraggude/awesome-laravel/)
+
 - [Collect.js](https://github.com/ecrmnn/collect.js/)
+
 - [Laravel 5.5 - Collection](https://github.com/laravel/framework/blob/5.5/src/Illuminate/Support/Collection.php#L394)
-- [Laravel best practice](http://www.laravelbestpractices.com/) 
 
+- [Laravel best practice - 1](http://www.laravelbestpractices.com/) 
 
+- [Laravel best practice - 2](https://github.com/alexeymezenin/laravel-best-practices)
+
+- https://www.phptherightway.com/
+
+- More good aricles
+
+  - https://www.cloudways.com/blog/laravel-best-practices/
+
+  - [laravel-the-right-way-best-practices](https://medium.com/@adebsalert/laravel-the-right-way-best-practices-2346cd6c5d89)
+
+  - [Laravel Beauty: Recipes & Best Practices](https://viblo.asia/p/laravel-beauty-recipes-best-practices-6BAMYk9Evnjz#_van-de-n--1-va-eager-loading-7)
+
+     
 
 # Lavarel MVC
 
@@ -329,8 +345,6 @@ dump($var);
 
 * Docs: https://laravel.com/docs/5.5/views
 
-
-
 ### Create master layout
 
 * create layouts/app.blade.php: @yield('content'), @yield('footer')
@@ -353,107 +367,6 @@ dump($var);
 
 
 * Docs: https://laravel.com/docs/5.5/blade
-
-# Questions
-
-- ✅ Difference between
-
-- ```
-  // this would drop all the tables and run the migrations
-  php artisan migrate:fresh
-  ```
-
-  ```
-  // this would rollback for every single table and run the migrations
-  php aritsan migrate:refresh
-  ```
-
-  
-
-- ✅ Is there any way to import dump data for tables  ?
-
-  using Seeder
-
-  https://toidicode.com/seeding-trong-laravel-18.html
-
-- ✅ Eloquent soft delete - difference `withTrashed` and `all`
-
-  ```
-  Students::withTrashed()->get(); -- would show students regardless delete_at column is null or not
-  Students::onlyTrashed()->get(); -- would show students whose delete_at column is not null
-  ```
-
-- ✅ Difference between: `Students::withTrashed()` and `Students::all()` ?
-
-  * `Students::all()`:  soft deleted rows will automatically be excluded from query results. it doesn't show soft deleted rows.
-
-  - `Students::withTrashed()`: inluded soft deleted rows in the query results
-
-    
-
-- ✅ What is the role of `middleware` in http folder ?
-
-  *Middleware is the middle layer between webserver and your service. It's suppose to apply the logic that  you want it happens before or after the request. - like callback function*
-
-  *it's about security features*
-
-  
-
-- ✅ There could be duplicated with routes - what would be call if there are 2 routes has same names and same method - get
-
-  *The last delaration will win*
-
-  
-
-- ✅ Difference between: 
-
-  ```php
-  Route::get('/contact', function(){})
-  Route::get('contact', function(){})
-  ```
-  *They are the same*
-
-  
-
-- ✅ Why do we have `routes` folder with api, channels, console, web ?
-
-  *it's about Soc (Separation of Concerns)*
-
-  *Concerns are the different aspects of software functionality. For instance, the "business logic" of software is a concern, and the interface through which a person uses this logic is another.*
-
-  *The separation of concerns is keeping the code for each of these concerns separate. Changing the interface should not require changing the business logic code, and vice versa.*
-
-  *Model-View-Controller (MVC) design pattern is an excellent example of separating these concerns for better software maintainability.*
-
-  
-
-- ✅ Mysql 8 connection problem:
-
-  - communication link failure
-  - request authentication method unknow to client (cache_rsha2_password)
-  - connection refused
-
-  **Way 1 :=> mariadb with docker**
-
-  *Use mariadb, set no password. Use docker if you can.*
-
-  1. *Install docker for mac*
-  2. *Run commands*
-
-  ```
-  docker rm -v mariadb
-  docker run -p "3306:3306" -e MYSQL_ALLOW_EMPTY_PASSWORD=1 --name mariadb -d mariadb
-  ```
-
-  lệnh dưới tạo ra 1 container chạy maria db, attach vào port 3306 => nếu e đã cài mysql thì gỡ mysql của e ra để khỏi xung đột port
-
-  MYSQL_ALLOW_EMPTY_PASSWORD=1 => means ko cần password, sử dụng uname = root, password =
-
-  e đưa e lệnh đó vào 1 file shell, sau này chỉ cần chạy docker trước, rồi chạy file shell đó thôi
-
-  **Way 2 :=> Re-install xampp with the version without VM**
-
-  **Way 3 :=> Use previous version of mysql: 5 or 7.2**
 
 # Setup project
 
