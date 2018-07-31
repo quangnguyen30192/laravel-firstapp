@@ -71,3 +71,7 @@ Route::get('/demo-mail', function () {
 
 
 Route::resource('/admin/users', 'AdminUsersController');
+
+Route::get('/admin-test', function () {
+    return view('admin.index');
+});
