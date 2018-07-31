@@ -16,6 +16,7 @@ class UsersDumpData extends Seeder
             'name' => 'Quang',
             'email' => str_random(10)."@gmail.com",
             'password' => bcrypt('Secret'),
+            'is_active' => 1,
             'country_id' => 1
         ]);
 
