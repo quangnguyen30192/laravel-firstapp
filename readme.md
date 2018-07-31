@@ -30,7 +30,7 @@ Reference:
 
 - https://www.phptherightway.com/
 
-- More good aricles
+- More good articles
 
   - https://www.cloudways.com/blog/laravel-best-practices/
 

@@ -47,23 +47,27 @@ Testing
 
 Git & Git hub (11)
 
-Application (39)
+Application (39) 
 
-## Wednesday (1 August) , Thusday (2 August)
+## Wednesday (1 August)
 
-Application (39)
+Application (39) 
 
-## Friday (3 August)
+## Thusday (2 August)
 
 Application - Posts (20)
 
 Application - Categories (3)
 
+## Friday (3 August)
+
 Application - Media (5)
+
+Application - Comments (20)
 
 ## Sartuday (4 August)
 
-Extra features (5)
+Extra features (4)
 
 Extra features - WYSIWYG and file management installation (3)
 
