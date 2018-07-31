@@ -21,7 +21,7 @@ public function post()
 
 * Inverse relationship: get user via post
 
-  Post model
+  Post model (user_id is in Post table)
 
   ```php
   public function user()

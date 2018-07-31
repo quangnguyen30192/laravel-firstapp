@@ -373,15 +373,15 @@ dump($var);
 # Setup project
 
 ```bash
-composer install
+composer install;
 
-chmod -R o+rw storage
+chmod -R o+rw storage;
 
-composer run post-root-package-install
+composer run post-root-package-install;
 
-composer run post-create-project-cmd
+composer run post-create-project-cmd;
 
-npm install
+npm install;
 ```
 
 
