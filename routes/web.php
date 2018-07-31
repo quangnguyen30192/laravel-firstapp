@@ -15,6 +15,7 @@
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+        use Illuminate\Support\Facades\Mail;
 
 Route::group(['middleware' => 'web'], function () {
     Route::resource('/posts', 'PostController');
@@ -61,3 +62,9 @@ Route::get('/admin/user/roles', ['middleware' => ['role', 'auth', 'web'], functi
 }]);
 
 Route::get('/admin', 'AdminController@index');
+
+Route::get('/demo-mail', function () {
+    Mail::raw('test', function ($message) {
+        $message->to('quangnbnse90114@gmail.com', 'Quang')->subject('Hello Quang how are you');
+    });
+});
