@@ -68,3 +68,6 @@ Route::get('/demo-mail', function () {
         $message->to('quangnbnse90114@gmail.com', 'Quang')->subject('Hello Quang how are you');
     });
 });
+
+
+Route::resource('/admin/users', 'AdminUsersController');
