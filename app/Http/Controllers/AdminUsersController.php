@@ -103,6 +103,8 @@ class AdminUsersController extends Controller {
     {
         $user = User::find($id);
         $user->delete();
+
+        session()->flash('deleted_user', $user->name . ' has been deleted');
         return redirect(route('users.index'));
     }
 }

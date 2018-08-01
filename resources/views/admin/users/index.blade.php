@@ -2,6 +2,11 @@
 
 @section("content")
     <h1>Users</h1>
+    @if (session('deleted_user'))
+        <div class="container">
+            <p class="bg-danger">{{session('deleted_user')}}</p>
+        </div>
+    @endif
     <table class="table">
         <thead>
         <tr>
