@@ -122,3 +122,13 @@ use asset with img_file is in public/
 <img src="{{asset($post->img_file)}}" />
 ```
 
+
+
+String collection convert into string with implode
+
+```php
+$roleName = collect($this->roles)->map(function ($role) {
+    return $role->name;
+})->implode(' | ');
+```
+

@@ -4,11 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AdminUserCreateRequest;
 use App\Role;
+use App\Services\UserService;
 use App\User;
 use Illuminate\Http\Request;
 
-class AdminUsersController extends Controller
-{
+class AdminUsersController extends Controller {
+
+    private $userService;
+
+    /**
+     * AdminUsersController constructor.
+     *
+     * @param $userService
+     */
+    public function __construct(UserService $userService) {
+        $this->userService = $userService;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +52,7 @@ class AdminUsersController extends Controller
      */
     public function store(AdminUserCreateRequest $request)
     {
-        User::create($request->all());
+        $this->userService->store($request);
         return redirect('/admin/users');
     }
 
