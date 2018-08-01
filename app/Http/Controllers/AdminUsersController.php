@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AdminUserCreateRequest;
+use App\Http\Requests\AdminUserEditRequest;
 use App\Role;
 use App\Services\UserService;
 use App\User;
-use Illuminate\Http\Request;
 
 class AdminUsersController extends Controller {
 
@@ -53,7 +53,7 @@ class AdminUsersController extends Controller {
     public function store(AdminUserCreateRequest $request)
     {
         $this->userService->store($request);
-        return redirect('/admin/users');
+        return redirect(route('users.index'));
     }
 
     /**
@@ -87,8 +87,9 @@ class AdminUsersController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(AdminUserEditRequest $request, $id) {
+        $this->userService->update($request, $id);
+        return redirect(route('users.edit', $id));
     }
 
     /**

@@ -3,8 +3,8 @@
 namespace App;
 
 use Collective\Html\Eloquent\FormAccessible;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -70,7 +70,7 @@ class User extends Authenticatable
     }
 
     public function formRoleIdAttribute() {
-        $role = $this->roles()->first();
+        $role = $this->roles()->latest()->first();
         return $role == null ? -1 : $role->id;
     }
 

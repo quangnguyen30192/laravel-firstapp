@@ -7,7 +7,7 @@
                  class="img-responsive img-rounded">
     </div>
     <div class="col-sm-9">
-        {!! Form::model($user, ['method' => 'PATCH', 'action' => ['AdminUsersController@store', $user->id], 'files' => true]) !!}
+        {!! Form::model($user, ['method' => 'PATCH', 'action' => ['AdminUsersController@update', $user->id], 'files' => true]) !!}
         <div class="form-group">
             {!! Form::label('name', 'Name: ', ['class' => 'control-label']) !!}
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -26,11 +26,6 @@
         <div class="form-group">
             {!! Form::label('is_active', 'Status: ', ['class' => 'control-label']) !!}
             {!! Form::select('is_active', [1 => 'Active', 0 => 'Not Active'], null, ['class' => 'form-control']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('password', 'Password: ', ['class' => 'control-label']) !!}
-            {!! Form::password('password', null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">

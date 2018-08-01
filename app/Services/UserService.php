@@ -11,4 +11,5 @@ namespace App\Services;
 
 interface UserService {
     public function store($request);
+    public function update($request, $id);
 }
