@@ -26,7 +26,7 @@
                         @else
                             <td>No Photo</td>
                         @endif
-                        <td>{{$user->name}}</td>
+                        <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                         <td>{{$user->email}}</td>
                         <td>{{empty($user->roles()) ? "N/A" : $user->roleNames()}}</td>
                         <td>{{$user->is_active == 1 ? "Active" : "Not Active"}}</td>

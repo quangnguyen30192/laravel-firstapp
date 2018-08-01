@@ -75,7 +75,9 @@ class AdminUsersController extends Controller {
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $roles = Role::pluck('name', 'id')->all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -87,7 +89,6 @@ class AdminUsersController extends Controller {
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**

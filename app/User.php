@@ -2,12 +2,14 @@
 
 namespace App;
 
+use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use FormAccessible;
 
     /**
      * The attributes that are mass assignable.
@@ -74,5 +76,10 @@ class User extends Authenticatable
         return collect($this->roles)->map(function ($role) {
             return $role->name;
         })->implode(' | ');
+    }
+
+    public function formRoleIdAttribute() {
+        $role = $this->roles()->first();
+        return $role == null ? -1 : $role->id;
     }
 }
