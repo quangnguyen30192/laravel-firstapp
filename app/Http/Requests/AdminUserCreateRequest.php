@@ -31,4 +31,11 @@ class AdminUserCreateRequest extends FormRequest
             'password' => 'required|min:3|max:32'
         ];
     }
+
+    public function messages() {
+        return [
+            'role_id.required' => 'Role is required',
+            'is_active.required' => 'Status is required'
+        ];
+    }
 }
