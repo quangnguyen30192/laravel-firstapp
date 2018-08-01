@@ -19,6 +19,7 @@ class AdminUsersController extends Controller {
      */
     public function __construct(UserService $userService) {
         $this->userService = $userService;
+        //        $this->middleware(['isAdmin', 'auth']);
     }
 
 
@@ -100,6 +101,8 @@ class AdminUsersController extends Controller {
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect(route('users.index'));
     }
 }
