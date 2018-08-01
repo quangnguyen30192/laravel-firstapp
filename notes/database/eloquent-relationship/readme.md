@@ -21,7 +21,7 @@ public function post()
 
 * Inverse relationship: get user via post
 
-  Post model (user_id is in Post table)
+  Post model  (Post table has user_id which is primary key of User table)
 
   ```php
   public function user()
@@ -86,6 +86,19 @@ public function posts()
     return $this->hasMany('App\Post');
 }
 ```
+
+
+
+Post model: (Post table has user_id which is primary key of User table)
+
+```
+public function user()
+{
+    return $this->belongsTo('App\User');
+}
+```
+
+
 
 - Get posts via user
 

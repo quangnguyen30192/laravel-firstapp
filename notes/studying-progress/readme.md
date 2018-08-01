@@ -34,9 +34,15 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
 
 ✅ Laravel Sessions (4)
 
-## Tuesday (31 July)
+## ✅  Tuesday (31 July)
 
-Laravel Sending Email/Api (8)
+✅ Laravel Sending Email/Api (8)
+
+✅ Application (24/39) 
+
+## Wednesday (1 August)
+
+Application (15/39) 
 
 Testing
 
@@ -44,14 +50,6 @@ Testing
 - https://code.tutsplus.com/tutorials/testing-in-laravel--cms-30465
 - https://laracasts.com/series/phpunit-testing-in-laravel 
 - Test Driven Development
-
-Git & Git hub (11)
-
-Application (39) 
-
-## Wednesday (1 August)
-
-Application (39) 
 
 ## Thusday (2 August)
 
