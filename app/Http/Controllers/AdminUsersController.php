@@ -19,7 +19,7 @@ class AdminUsersController extends Controller {
      */
     public function __construct(UserService $userService) {
         $this->userService = $userService;
-        //        $this->middleware(['isAdmin', 'auth']);
+//        $this->middleware(['isAdmin', 'auth']);
     }
 
 
@@ -103,6 +103,11 @@ class AdminUsersController extends Controller {
     {
         $user = User::find($id);
         $user->delete();
+
+        $photo = $user->photos()->first();
+        if ($photo !== null) {
+            unlink(public_path() . "/" . $photo->path);
+        }
 
         session()->flash('deleted_user', $user->name . ' has been deleted');
         return redirect(route('users.index'));
