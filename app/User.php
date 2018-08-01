@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'is_active'
     ];
 
     /**
@@ -60,6 +60,10 @@ class User extends Authenticatable
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = strtoupper($value);
+    }
+
+    public function setPasswordAttribute($value) {
+        $this->attributes['password'] = bcrypt($value);
     }
 
     public function isAdmin() {
