@@ -54,6 +54,7 @@ class User extends Authenticatable
         return $this->hasOne('App\Address');
     }
 
+    // accessors and mutators
     public function getNameAttribute($value)
     {
         return strtoupper($value);
@@ -68,6 +69,12 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    public function formRoleIdAttribute() {
+        $role = $this->roles()->first();
+        return $role == null ? -1 : $role->id;
+    }
+
+    // custom function
     public function isAdmin() {
         return $this->roles()->whereName('Administrator')->exists();
     }
@@ -76,10 +83,5 @@ class User extends Authenticatable
         return collect($this->roles)->map(function ($role) {
             return $role->name;
         })->implode(' | ');
-    }
-
-    public function formRoleIdAttribute() {
-        $role = $this->roles()->first();
-        return $role == null ? -1 : $role->id;
     }
 }

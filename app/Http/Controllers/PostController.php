@@ -39,7 +39,7 @@ class PostController extends Controller
     {
         $file = $request->file('file');
         if ($file) {
-            $name = $file->getClientOriginalName();
+            $name = time() . $file->getClientOriginalName();
             $file->move('images', $name);
         }
 

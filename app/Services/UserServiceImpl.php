@@ -9,7 +9,6 @@
 namespace App\Services;
 
 use App\Photo;
-use App\Role;
 use App\User;
 
 class UserServiceImpl implements UserService {
@@ -26,10 +25,15 @@ class UserServiceImpl implements UserService {
 
         $file = $request->file('file');
         if ($file) {
-            $fileName = $file->getClientOriginalName();
-            $file->move('images', $fileName);
+            $fileName = $this->saveImgFile($file);
+            $user->photos()->save(new Photo(['path' => $fileName]));
         }
 
-        $user->photos()->save(new Photo(['path' => $fileName]));
+    }
+
+    private function saveImgFile($file) {
+        $fileName = time() . $file->getClientOriginalName();
+        $file->move('images', $fileName);
+        return $fileName;
     }
 }
