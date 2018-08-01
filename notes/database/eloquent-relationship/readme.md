@@ -213,7 +213,21 @@ public function user()
     }
     ```
 
+- Record creation
 
+  ```php
+          $user = User::create($request->all());
+  
+          // save the role -- since we only have role_id
+          $user->roles()->attach($request->role_id);
+  
+          // or
+  //        $role = Role::find($request->role_id);
+  //        $user->roles()->save($role);
+  
+  ```
+
+  
 
 ## Has many through
 
@@ -411,6 +425,8 @@ $post->tags()->save($tag);
 ## Attach - Detach - Sync
 
 ​	These operations would interact with only pivot table
+
+​	Use for many to many and Polymorphic relation many to many relationship
 
 ### Attach
 
