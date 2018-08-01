@@ -1,5 +1,21 @@
 ## Forms and validation
 
+
+
+## Route mapping to Controller methods
+
+```
+ POST      | users             | users.store      | UsersController@store    
+ GET|HEAD  | users             | users.index      | UsersController@index    
+ GET|HEAD  | users/create      | users.create     | UsersController@create   
+ DELETE    | users/{user}      | users.destroy    | UsersController@destroy  
+ PUT|PATCH | users/{user}      | users.update     | UsersController@update   
+ GET|HEAD  | users/{user}      | users.show       | UsersController@show     
+ GET|HEAD  | users/{user}/edit | users.edit       | UsersController@edit
+```
+
+
+
 ##  Get input information from a request
 
 

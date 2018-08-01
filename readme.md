@@ -38,6 +38,8 @@ Reference:
 
   - [Laravel Beauty: Recipes & Best Practices](https://viblo.asia/p/laravel-beauty-recipes-best-practices-6BAMYk9Evnjz#_van-de-n--1-va-eager-loading-7)
 
+  - https://laravel-news.com/eloquent-tips-tricks
+
      
 
 # Lavarel MVC
