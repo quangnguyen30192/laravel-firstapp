@@ -15,7 +15,7 @@
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-        use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Mail;
 
 Route::group(['middleware' => 'web'], function () {
     Route::resource('/posts', 'PostController');
@@ -73,5 +73,6 @@ Route::get('/demo-mail', function () {
 Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::resource('/admin/users', 'AdminUsersController');
     Route::resource('/admin/posts', 'AdminPostsController');
+    Route::resource('/admin/categories', 'AdminCategoriesController');
 });
 
