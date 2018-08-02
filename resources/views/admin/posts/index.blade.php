@@ -25,10 +25,10 @@
                 @foreach($posts as $post)
                     <tr>
                         <td>{{$post->id}}</td>
-                        <td><img height="100"
-                                 src="{{asset($post->img_file ?? "images/noimg.jpeg")}}">
+                        <td><img height="100" width="100"
+                                 src="{{asset($post->photos()->count() > 0 ? $post->photos()->first()->path : "images/noimg.jpeg")}}">
                         </td>
-                        <td><a href="{{route('users.edit', $post->id)}}">{{$post->title}}</a></td>
+                        <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
                         <td>{{$post->category->name ?? "Uncategorized"}}</td>
                         <td>{{$post->content ?? "Empty"}}</td>
                         <td>{{$post->created_at->diffForHumans()}}</td>

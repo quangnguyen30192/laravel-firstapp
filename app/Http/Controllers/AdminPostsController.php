@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Requests\AdminPostCreateRequest;
+use App\Http\Requests\AdminPostRequest;
 use App\Photo;
 use App\Post;
 use App\Services\FileService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminPostsController extends Controller {
@@ -51,7 +50,7 @@ class AdminPostsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminPostCreateRequest $request) {
+    public function store(AdminPostRequest $request) {
 
         $post = Auth::user()->posts()->create($request->all());
 
@@ -72,8 +71,6 @@ class AdminPostsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $post = Post::findOrFail($id);
-        return view('posts.show', compact('post'));
     }
 
     /**
@@ -84,8 +81,9 @@ class AdminPostsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $post = Post::findOrFail($id);
-        return view('posts.edit', compact('post'));
+        $post = Post::where(['id' => $id, 'user_id' => Auth::user()->id])->first();
+        $categories = Category::pluck('name', 'id');
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -96,13 +94,16 @@ class AdminPostsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
-        $post = Post::findOrFail($id);
-        $title = $request->get('title');
-        $post->title = $title;
+    public function update(AdminPostRequest $request, $id) {
+        $post = Post::where(['id' => $id, 'user_id' => Auth::user()->id])->first();
+        $post->update($request->all());
+        $file = $request->file('file');
+        if ($file) {
+            $fileName = $this->fileService->moveToTempFolder($file);
+            $post->photos()->save(new Photo(['path' => $fileName]));
+        }
 
-        $post->save();
-        return redirect(route('posts.index'));
+        return redirect(route('posts.edit', $id));
     }
 
     /**
@@ -113,7 +114,14 @@ class AdminPostsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Post::whereId($id)->delete();
+        $post = Post::where(['id' => $id, 'user_id' => Auth::user()->id])->first();
+        $photo = $post->photos()->first();
+        if ($photo !== null) {
+            unlink(public_path() . "/" . $photo->path);
+        }
+        $post->delete();
+
+        session()->flash('deleted_post', $post->title . ' has been deleted');
         return redirect(route('posts.index'));
     }
 }
