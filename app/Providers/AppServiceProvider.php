@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\FileService;
+use App\Services\FileServiceImpl;
 use App\Services\UserService;
 use App\Services\UserServiceImpl;
 use Illuminate\Support\Facades\Schema;
@@ -14,8 +16,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot() {
         Schema::defaultStringLength(180);
     }
 
@@ -24,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         $this->app->bind(UserService::class, UserServiceImpl::class);
+        $this->app->bind(FileService::class, FileServiceImpl::class);
     }
 }

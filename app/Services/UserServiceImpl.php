@@ -14,6 +14,18 @@ use App\User;
 
 class UserServiceImpl implements UserService {
 
+    private $fileService;
+
+    /**
+     * UserServiceImpl constructor.
+     *
+     * @param $fileService
+     */
+    public function __construct(FileService $fileService) {
+        $this->fileService = $fileService;
+    }
+
+
     public function store($request) {
         $user = User::create($request->all());
 
@@ -26,7 +38,7 @@ class UserServiceImpl implements UserService {
 
         $file = $request->file('file');
         if ($file) {
-            $fileName = $this->moveToTempFolder($file);
+            $fileName = $this->fileService->moveToTempFolder($file);
             $user->photos()->save(new Photo(['path' => $fileName]));
         }
 
@@ -37,7 +49,7 @@ class UserServiceImpl implements UserService {
         $input = $request->all();
         $file = $request->file('file');
         if ($file) {
-            $fileName = $this->moveToTempFolder($file);
+            $fileName = $this->fileService->moveToTempFolder($file);
             $user->photos()->save(new Photo(['path' => $fileName]));
         }
 
@@ -47,11 +59,5 @@ class UserServiceImpl implements UserService {
         }
 
         $user->update($input);
-    }
-
-    private function moveToTempFolder($file) {
-        $fileName = time() . $file->getClientOriginalName();
-        $file->move('images', $fileName);
-        return $fileName;
     }
 }

@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Config;
 
 class Post extends Model
 {
+    protected $fillable = [
+        'title',
+        'content',
+        'category_id',
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\User');
