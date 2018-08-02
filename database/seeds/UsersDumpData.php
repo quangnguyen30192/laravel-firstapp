@@ -15,8 +15,8 @@ class UsersDumpData extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Quang',
-            'email' => str_random(10)."@gmail.com",
-            'password' => bcrypt('Secret'),
+            'email' => "quang@gmail.com",
+            'password' => bcrypt('123456'),
             'is_active' => 1,
             'created_at' => Carbon::now()->subDay(5),
             'updated_at' => Carbon::now()->subDay(5),
