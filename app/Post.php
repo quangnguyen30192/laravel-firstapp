@@ -32,6 +32,10 @@ class Post extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public function comments() {
+        return $this->hasMany('App\Comment');
+    }
+
     public static function scopeLatestQuangPost($query)
     {
         return $query->whereUserId(1)->orderBy('id', 'desc')->get();

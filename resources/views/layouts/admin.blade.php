@@ -178,23 +178,22 @@
                     </li>
 
 
-
-
-
-
-
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Comments<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="flot.html">Flot Charts</a>
+                                <a href="{{route('comments.index')}}">All Comments</a>
                             </li>
+
                             <li>
-                                <a href="morris.html">Morris.js Charts</a>
+                                <a href="{{route('comments.create')}}">Create comments</a>
                             </li>
+
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+
+
                     <li>
                         <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
                     </li>

@@ -75,5 +75,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::resource('/admin/posts', 'AdminPostsController');
     Route::resource('/admin/categories', 'AdminCategoriesController');
     Route::resource('/admin/media', 'AdminMediaController');
+    Route::resource('/admin/comments', 'AdminCommentsController');
+    Route::resource('/admin/comments/replies', 'AdminRepliesController');
 });
 
