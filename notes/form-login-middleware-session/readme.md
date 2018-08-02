@@ -181,6 +181,22 @@ public function index() {
 
 
 
+apply on a group of routes
+
+```php
+Route::group(['middleware' => 'web'], function () {
+    Route::resource('/posts', 'PostController');
+});
+
+Route::group(['middleware' => ['auth', 'isAdmin']], function () {
+    Route::resource('/admin/users', 'AdminUsersController');
+    Route::resource('/admin/posts', 'AdminPostsController');
+});
+
+```
+
+
+
 ## Docs https://laravel.com/docs/5.5/middleware
 
 
