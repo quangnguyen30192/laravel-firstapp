@@ -22,6 +22,10 @@ class Post extends Model
         return $this->morphToMany('App\Tag', 'taggable');
     }
 
+    public function category() {
+        return $this->belongsTo('App\Category');
+    }
+
     public static function scopeLatestQuangPost($query)
     {
         return $query->whereUserId(1)->orderBy('id', 'desc')->get();

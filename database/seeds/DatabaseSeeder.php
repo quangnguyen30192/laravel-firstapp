@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
          $this->call(VideosDumpData::class);
          $this->call(TaggablesDumpData::class);
          $this->call(AddressesDumpData::class);
+         $this->call(CategoriesDumpData::class);
     }
 }
