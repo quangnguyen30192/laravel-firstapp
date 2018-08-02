@@ -20,6 +20,8 @@ Reference:
 
 - [Awesome laravel](https://github.com/chiraggude/awesome-laravel/)
 
+- https://laravel.com/docs/5.0/helpers
+
 - [Collect.js](https://github.com/ecrmnn/collect.js/)
 
 - [Laravel 5.5 - Collection](https://github.com/laravel/framework/blob/5.5/src/Illuminate/Support/Collection.php#L394)

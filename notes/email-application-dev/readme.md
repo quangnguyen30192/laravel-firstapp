@@ -71,11 +71,58 @@ View
 
 
 
-## Redirect
+## Redirect to route and forward to view
+
+* Route: 
+
+  When we define in `web.php`
+
+  ```php
+  Route::resource('/user', 'UserController');
+  ```
+
+  Then we would have below name of routes mapping to controller methods and URLs:
+
+  ```
+   POST      | users             | users.store      | UsersController@store    
+   GET|HEAD  | users             | users.index      | UsersController@index    
+   GET|HEAD  | users/create      | users.create     | UsersController@create   
+   DELETE    | users/{user}      | users.destroy    | UsersController@destroy  
+   PUT|PATCH | users/{user}      | users.update     | UsersController@update   
+   GET|HEAD  | users/{user}      | users.show       | UsersController@show     
+   GET|HEAD  | users/{user}/edit | users.edit       | UsersController@edit
+  ```
+
+  we use *route(routeName)* to get the value of corresponding url
+
+   e.g: 
+
+  * route('users.index') is app.dev/users
+  * route('users.create') is app.dev/users/create
+  * route('user.edit', 1) is app.dev/users/1/edit 
+
+* View: refer to blade files in `views/`
 
 * In Controller: we use 
-  * `return view` : forward to blade file
-  *  `return redirect(route(''))`: redirect to Controller method
+  * `return view('users.index')` : forward to blade file
+
+  *  `return redirect(route('users.index'))`: redirect to Controller method
+
+  *  we dont use these below in Controller
+
+     *  `return route('users.index')` : route('users.index') will return a string of url path - like 'app.dev/users' - then this command would return a blank page with this string
+
+        ```php
+        // it doesnt work, dont use it
+        return route('users.index');
+        
+        // we use
+        return redirect(route('users.index'));
+        ```
+
+        
+
+     *  `return redirect(view('users.index'))`: this would go to blade file : `views/users/index.blade.php` directly without passing through index() method in controller then there will be some errors like missing parameters or missing business logic processing.
 
 ```php
 // admin index page
@@ -98,8 +145,6 @@ return redirect(route('admin.edit', $user->id));
     
 
 // this below would go to views/admin/index.blade.php - not index() in Controller
-// it doesnt go to index() method then it might have errors -- e.g missing parameters
-// we will have this in controller
 return view('admin.index');
 
 // from Controller we forward to admin/edit.blade.php within a parameter - user
@@ -109,16 +154,7 @@ return view('admin.edit', compact('user'));
 
 
 
-* we dont use  `return route` in Controller
-
-  ```php
-  return route('users.index');
-  
-  // we use
-  return redirect(route('users.index'));
-  ```
-
-* In blade we use `route`  to map Controller method - not `view`
+* In blade files we use `route`  to map Controller method - not `view`
 
   ```php
   <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
@@ -227,3 +263,21 @@ public function formDateOfBirthAttribute($value)
 ## Implement Edit page
 
 Form element should not have default value. If it does -> when a field is null, the value of field would get the default value and we dont know that problem.
+
+
+
+## Delete files in repository: public
+
+```php
+unlink(public_path() . "/" .$user->photos()->first()->path);
+```
+
+
+
+## Table foreign keys should be unsigned - index
+
+```php
+$table->interger('category_id')->unsigned()->index();
+$table->interger('store_id')->unsigned()->index();
+```
+

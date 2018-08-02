@@ -1,5 +1,7 @@
 Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-beginners-become-a-master-in-laravel/learn/v4/t/lecture/4872796?start=0)
 
+Started from Monday - 23 July
+
 ## ✅ Sartuday (28 July)
 
 ✅ Database - Eloquent - Relationship (17)  
@@ -40,32 +42,23 @@ Inspired by Laravel [udemy course](https://www.udemy.com/php-with-laravel-for-be
 
 ✅ Application (24/39) 
 
-## Wednesday (1 August)
+## ✅ Wednesday (1 August)
 
-Application (15/39) 
+✅  Application (15/39) 
 
-Testing
-
-- [unit testing](https://medium.com/@jsdecena/crud-unit-testing-in-laravel-5-ac286f592cfd)
-- https://code.tutsplus.com/tutorials/testing-in-laravel--cms-30465
-- https://laracasts.com/series/phpunit-testing-in-laravel 
-- Test Driven Development
+✅  Application - Posts (20/20) 
 
 ## Thusday (2 August)
 
-Application - Posts (20)
-
 Application - Categories (3)
-
-## Friday (3 August)
 
 Application - Media (5)
 
-Application - Comments (20)
-
-## Sartuday (4 August)
+Application - Comments (20/20)
 
 Extra features (4)
+
+## Friday (3 August)
 
 Extra features - WYSIWYG and file management installation (3)
 
@@ -75,12 +68,19 @@ Extra features - Bulk Media Delete (5)
 
 Extra features - Deploy app to a shared hosting account (13)
 
-## Sunday (5 August)
-
 Extra features - Laravel data seeding (3)
+
+## Sartuday (4 August)
 
 Laravel 5.5 (3)
 
 Extra features - Adjustment and more features (12)
+
+Testing
+
+- [unit testing](https://medium.com/@jsdecena/crud-unit-testing-in-laravel-5-ac286f592cfd)
+- https://code.tutsplus.com/tutorials/testing-in-laravel--cms-30465
+- https://laracasts.com/series/phpunit-testing-in-laravel 
+- Test Driven Development
 
 Review

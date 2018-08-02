@@ -91,7 +91,7 @@ public function posts()
 
 Post model: (Post table has user_id which is primary key of User table)
 
-```
+```php
 public function user()
 {
     return $this->belongsTo('App\User');
