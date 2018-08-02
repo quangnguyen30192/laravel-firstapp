@@ -50,9 +50,9 @@ Started from Monday - 23 July
 
 ## Thusday (2 August)
 
-Application - Categories (3)
+✅   Application - Categories (3)
 
-Application - Media (5)
+✅  Application - Media (5)
 
 Application - Comments (20/20)
 

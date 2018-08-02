@@ -266,18 +266,41 @@ Form element should not have default value. If it does -> when a field is null, 
 
 
 
-## Delete files in repository: public
-
-```php
-unlink(public_path() . "/" .$user->photos()->first()->path);
-```
-
-
-
 ## Table foreign keys should be unsigned - index
 
 ```php
 $table->interger('category_id')->unsigned()->index();
 $table->interger('store_id')->unsigned()->index();
+```
+
+
+
+## when delete a record
+
+```
+all the related records/files/data in other tables/directories should be deleted as well.
+```
+
+
+
+For automatically deleting in database: => set foreign key constraint on related model with cascade on delete.
+
+E.g: when you delete a user and the records in Post table which has that user_id should be deleted as well.
+
+Post table: migration file
+
+```php
+$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+if user->id is as increment (integer, unsigned) 
+ then user_id on post table $table->integer('user_id')->unsigned();
+```
+
+
+
+### Delete files in repository: public
+
+```php
+unlink(public_path() . "/" .$user->photos()->first()->path);
 ```
 
