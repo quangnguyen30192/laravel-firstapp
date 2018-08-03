@@ -14,31 +14,34 @@ class UsersDumpData extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Quang',
+            'name' => 'Quang nguyen ba',
             'email' => "quang@gmail.com",
             'password' => bcrypt('123456'),
             'is_active' => 1,
             'created_at' => Carbon::now()->subDay(5),
             'updated_at' => Carbon::now()->subDay(5),
-            'country_id' => 1
+            'country_id' => 1,
+            'slug' => str_slug('Quang nguyen ba')
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Tam',
+            'name' => 'ngueyn ngueyn',
             'email' => str_random(10)."@gmail.com",
             'password' => bcrypt('Secret'),
             'created_at' => Carbon::now()->subDay(4),
             'updated_at' => Carbon::now()->subDay(4),
-            'country_id' => 1
+            'country_id' => 1,
+            'slug' => str_slug('ngueyn ngueyn')
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Minh',
+            'name' => 'Minh Tai M',
             'email' => str_random(10)."@gmail.com",
             'password' => bcrypt('Secret'),
             'created_at' => Carbon::now()->subDay(3),
             'updated_at' => Carbon::now()->subDay(3),
             'country_id' => 2,
+            'slug' => str_slug('Minh Tai M')
         ]);
 
 

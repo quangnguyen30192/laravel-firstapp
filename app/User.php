@@ -3,6 +3,7 @@
 namespace App;
 
 use Collective\Html\Eloquent\FormAccessible;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -10,6 +11,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     use FormAccessible;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -83,5 +85,19 @@ class User extends Authenticatable
         return collect($this->roles)->map(function ($role) {
             return $role->name;
         })->implode(' | ');
+    }
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array {
+        return [
+            'slug' => [
+                'source' => 'name',
+                'onUpdate' => true
+            ]
+        ];
     }
 }

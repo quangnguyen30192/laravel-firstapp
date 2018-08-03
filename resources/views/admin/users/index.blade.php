@@ -66,7 +66,7 @@
                             <td>{{$user->id}}</td>
                             <td><img height="100"
                                      src="{{asset($user->photos()->count() > 0 ? $user->photos()->first()->path : "images/noimg.jpeg")}}"></td>
-                            <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
+                            <td><a href="{{route('users.edit', $user->slug)}}">{{$user->name}}</a></td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->roles()->count() > 0 ? $user->roleNames() : "Not assigned yet"}}</td>
                             <td>{{$user->is_active == 1 ? "Active" : "Not Active"}}</td>

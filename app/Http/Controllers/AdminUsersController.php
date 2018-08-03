@@ -76,12 +76,9 @@ class AdminUsersController extends Controller {
      */
     public function edit($slug)
     {
-        $userbySlug = User::where('slug', $slug);
-
-        return $userbySlug->id;
-//        $user = User::find(1);
-//        $roles = Role::pluck('name', 'id')->all();
-//        return view('admin.users.edit', compact('user', 'roles'));
+        $user = User::find(User::whereSlug($slug)->first()->id);
+        $roles = Role::pluck('name', 'id')->all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -93,7 +90,7 @@ class AdminUsersController extends Controller {
      */
     public function update(AdminUserEditRequest $request, $id) {
         $this->userService->update($request, $id);
-        return redirect(route('users.edit', $id));
+        return redirect(route('users.edit', User::find($id)->slug));
     }
 
     /**
