@@ -62,26 +62,28 @@ class AdminMediaController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
-        $photo = Photo::where([
-                                  'id' => $id,
-                                  'imageable_id' => Auth::user()->id,
-                                  'imageable_type' => 'App\User'
-                              ])->first();
-        if ($photo !== null) {
-            unlink(public_path() . "/" . $photo->path);
+    public function destroy(Request $request) {
+        if (isset($request->delete_single)) {
+            $photo = Photo::where([
+                                      'id' => $request->media_single_id,
+                                      'imageable_id' => Auth::user()->id,
+                                      'imageable_type' => 'App\User'
+                                  ])->first();
+
+            if ($photo !== null) {
+                unlink(public_path() . "/" . $photo->path);
+                $photo->delete();
+            }
+
+            session()->flash('deleted_photo', $photo->path . ' has been deleted');
         }
-        $photo->delete();
 
-        session()->flash('deleted_photo', $photo->path . ' has been deleted');
-        return redirect(route('media.index'));
-    }
-
-    public function deleteMedia(Request $request) {
-        $photoIds = $request->checkBoxArray;
-
-        Photo::whereIn('id', $photoIds)->delete();
+        if (isset($request->delete_multiple) && !empty($request->checkBoxArray)) {
+            $photoIds = $request->checkBoxArray;
+            Photo::whereIn('id', $photoIds)->delete();
+        }
 
         return redirect(route('media.index'));
     }
+
 }

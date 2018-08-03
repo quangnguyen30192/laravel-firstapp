@@ -77,9 +77,9 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::resource('/admin/media', 'AdminMediaController');
     Route::resource('/admin/comments', 'AdminCommentsController');
     Route::resource('/admin/comments/replies', 'AdminRepliesController');
-    Route::delete('/admin/media/delete/multiple', [
-        'as' => 'admin.media.delete.multiple',
-        'uses' => 'AdminMediaController@deleteMedia'
+    Route::delete('/admin/media', [
+        'as' => 'media.destroy',
+        'uses' => 'AdminMediaController@destroy'
     ]);
 });
 

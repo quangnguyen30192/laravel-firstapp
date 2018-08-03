@@ -8,7 +8,7 @@
         </div>
     @endif
     @if($photos)
-        <form action="{{route('admin.media.delete.multiple')}}" method="POST" class="form-inline">
+        <form action="{{route('media.destroy')}}" method="POST" class="form-inline">
             {{csrf_field()}}
             {{method_field('delete')}}
 
@@ -18,14 +18,14 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="submit" class="form-control btn btn-primary" value="Delete">
+                <input type="submit" class="form-control btn btn-primary" name="delete_multiple" value="Delete">
             </div>
 
 
             <table class="table">
                 <thead>
                 <tr>
-                    <th><input type="checkbox"></th>
+                    <th><input type="checkbox" id="checkAllBoxes"></th>
                     <th>Id</th>
                     <th>Name</th>
                     <th>Image</th>
@@ -38,7 +38,8 @@
                 <ul>
                     @foreach($photos as $photo)
                         <tr>
-                            <td><input type="checkbox" name="checkBoxArray[]" value="{{$photo->id}}"></td>
+                            <td><input type="checkbox" name="checkBoxArray[]" value="{{$photo->id}}" class="childBoxes">
+                            </td>
                             <td>{{$photo->id}}</td>
                             <td>{{$photo->path}}</td>
                             <td><img height="100" width="100"
@@ -47,12 +48,10 @@
                             <td>{{$photo->created_at->diffForHumans()}}</td>
                             <td>{{$photo->updated_at->diffForHumans()}}</td>
                             <td>
-                                {!! Form::open(['method' => 'DELETE', 'action' => ['AdminMediaController@destroy', $photo->id]]) !!}
                                 <div class="form-group">
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                    <input type="hidden" name="media_single_id" value="{{$photo->id}}">
+                                    <input type="submit" class="btn btn-danger" name="delete_single" value="Delete">
                                 </div>
-                                {!! Form::close() !!}
-
                             </td>
                         </tr>
                     @endforeach
@@ -62,4 +61,16 @@
                 </tbody>
             </table>
         </form>
+@endsection
+
+@section('script')
+    <script>
+        $('#checkAllBoxes').click(function () {
+            let parentStatus = this.checked;
+            $('.childBoxes').each(function () {
+                this.checked = parentStatus;
+            });
+
+        });
+    </script>
 @endsection
