@@ -240,6 +240,14 @@ session()->flush();
 
 
 
+### Test session has a specific attribute
+
+```
+Session:has('attribute')
+```
+
+
+
 ### Flash Data
 
 Sometimes you may wish to store items in the session only for the next request. You may do so using the `flash` method. Data stored in the session using this method will only be available during the subsequent HTTP request, and then will be deleted. Flash data is primarily useful for short-lived status messages:

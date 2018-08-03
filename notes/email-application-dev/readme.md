@@ -160,7 +160,16 @@ return view('admin.edit', compact('user'));
   <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
   ```
 
-  
+
+
+
+## Redirect back
+
+```
+return redirect()->back(); // back to the page that sent the request
+```
+
+
 
 ## Create a link
 
@@ -302,5 +311,29 @@ if user->id is as increment (integer, unsigned)
 
 ```php
 unlink(public_path() . "/" .$user->photos()->first()->path);
+```
+
+
+
+## include value in form by hidden input
+
+```html
+<input type="hidden" name="is_active" value="1" />
+action: Controller@update
+method PATCH
+```
+
+
+
+By this way we could re-use existing methods in controller (update ) rather than creating new one for different purposes
+
+```php
+submitting to action: Controller@enableThisOne, method POST
+
+...
+// somewhere in the controller
+enableThisOne() {
+    // update the post with is_active = 1
+}
 ```
 

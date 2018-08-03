@@ -262,6 +262,8 @@ dump($var);
   
       return "your url: " . $url;
   }));
+  
+  Route::get('/post/{id}', ['as' => 'home.post', 'uses' => 'AdminPostsController@post'])
   ```
 
 - Docs: https://laravel.com/docs/5.5/routing
