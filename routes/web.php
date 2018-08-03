@@ -50,12 +50,6 @@ Route::get('/demo-mutators', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', [
-    'as' => 'admin.index',
-    'uses' => 'AdminController@index'
-]);
-
 Route::get('/admin/user/roles', ['middleware' => 'role', function () {
     return "Middleware role";
 }]);
@@ -63,8 +57,6 @@ Route::get('/admin/user/roles', ['middleware' => 'role', function () {
 Route::get('/admin/user/roles', ['middleware' => ['role', 'auth', 'web'], function () {
     return "Middleware role";
 }]);
-
-//Route::get('/admin', 'AdminController@index');
 
 Route::get('/demo-mail', function () {
     Mail::raw('test', function ($message) {
@@ -74,6 +66,11 @@ Route::get('/demo-mail', function () {
 
 
 Route::group(['middleware' => ['auth', 'isAdmin']], function () {
+    Route::get('/admin', [
+        'as' => 'admin.index',
+        'uses' => 'AdminController@index'
+    ]);
+
     Route::resource('/admin/users', 'AdminUsersController');
     Route::resource('/admin/posts', 'AdminPostsController');
     Route::resource('/admin/categories', 'AdminCategoriesController');
@@ -84,5 +81,11 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
         'as' => 'media.destroy',
         'uses' => 'AdminMediaController@destroy'
     ]);
+
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index');
 });
 

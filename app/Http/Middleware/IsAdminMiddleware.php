@@ -18,7 +18,7 @@ class IsAdminMiddleware
     {
         $user = Auth::user();
         if (!$user->isAdmin()) {
-            return redirect('/');
+            return redirect(route('home'));
         }
         return $next($request);
     }
