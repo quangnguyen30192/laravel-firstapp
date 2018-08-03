@@ -88,6 +88,10 @@ Forms only support GET and POST, in order to use PUT method then put the below i
 
 ```html
 <input type="hidden" name="_method" value="PUT">
+
+// or
+
+{{method_field('PUT')}}
 ```
 
 

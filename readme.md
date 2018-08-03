@@ -263,7 +263,17 @@ dump($var);
       return "your url: " . $url;
   }));
   
-  Route::get('/post/{id}', ['as' => 'home.post', 'uses' => 'AdminPostsController@post'])
+  Route::get('/post/{id}', ['as' => 'home.post', 'uses' => 'AdminPostsController@post']);
+  
+  // if you dont want use default generated urls
+  Route::resource('/admin/users', 'AdminPostsController@post', ['names' => [
+      'index' => 'your.custom.route'
+      'store' => 'your.custom.store'
+      'create' => 'your.custom.route.create'
+      'edit' => 'your.custom.route.edit'
+      'update' => 'your.custom.route.update'
+      'delete' => 'your.custom.route.delete'
+  ]])
   ```
 
 - Docs: https://laravel.com/docs/5.5/routing

@@ -28,8 +28,13 @@ $user = Auth::user();
 ### check user logged in
 
 ```php
-if(Auth:check()) {
+if(Auth::check()) { 
     echo "logged in";
+}
+
+// or check it's a guest (not logged in)
+if(Auth::guest()) {
+    echo "Hi, please do login";
 }
 ```
 

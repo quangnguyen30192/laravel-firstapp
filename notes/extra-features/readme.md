@@ -37,6 +37,8 @@ write eloquent better, we could find errors here and fix
 
 * Changes: [git commit](https://github.com/quangnguyen30192/laravel-firstapp/commit/3e0c398350661bb276233d4669900c2770cc1cdf)
 
+  * Add a column 'slug into the table with type string unique.
+
 
 
 ## Pagination

@@ -350,3 +350,32 @@ App\User::whereSlug('quang-nguyen-ba');
 
 ```
 
+
+
+## fix csrf error on console log
+
+Add the code below into your meta tags
+
+```
+<meta name="csrf-token" content="{{ csrf_token() }}">
+```
+
+Then, once you have created the `meta` tag, you can instruct a library like jQuery to automatically add the token to all request headers. This provides simple, convenient CSRF protection for your AJAX based applications:
+
+```
+// you dont need this if you are using bootstrap that included this already.
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+```
+
+
+
+## User class in blade file
+
+```
+<p>Copyright &copy; qbnn.net {{\Carbon\Carbon::now()->year}}</p>
+```
+
