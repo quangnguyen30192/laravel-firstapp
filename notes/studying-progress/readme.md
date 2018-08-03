@@ -54,33 +54,36 @@ Started from Monday - 23 July
 
 ✅  Application - Media (5)
 
-✅  Application - Comments (20/20)
-
 ✅  Extra features (4)
 
-## Friday (3 August)
+## ✅  Friday (3 August)
 
-Extra features - WYSIWYG and file management installation (3)
+✅  Extra features - Bulk Media Delete (5)
 
-Extra features - Disqus Comment System (1)
-
-Extra features - Bulk Media Delete (5)
-
-Extra features - Deploy app to a shared hosting account (13)
-
-Extra features - Laravel data seeding (3)
+✅  Extra features - Laravel data seeding (3)
 
 ## Sartuday (4 August)
 
-Laravel 5.5 (3)
+* [Create fake data](https://kollox.com/news.php?read=generating-fake-users-in-laravel-5.5)
 
-Extra features - Adjustment and more features (12)
+* Testing
 
-Testing
+  - [unit testing](https://medium.com/@jsdecena/crud-unit-testing-in-laravel-5-ac286f592cfd)
+  * https://code.tutsplus.com/tutorials/testing-in-laravel--cms-30465
+  * https://laracasts.com/series/phpunit-testing-in-laravel 
+  * Test Driven Development
 
-- [unit testing](https://medium.com/@jsdecena/crud-unit-testing-in-laravel-5-ac286f592cfd)
-- https://code.tutsplus.com/tutorials/testing-in-laravel--cms-30465
-- https://laracasts.com/series/phpunit-testing-in-laravel 
-- Test Driven Development
+  
 
-Review
+## Later
+
+Application - Comments (0/20)
+
+Extra features - Adjustment and more features (6/12)
+
+Extra features - Deploy app to a shared hosting account (0/13)
+
+Extra features - WYSIWYG and file management installation (1/3)
+
+Extra features - Disqus Comment System (0/1)
+

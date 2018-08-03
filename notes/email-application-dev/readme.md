@@ -379,3 +379,11 @@ $.ajaxSetup({
 <p>Copyright &copy; qbnn.net {{\Carbon\Carbon::now()->year}}</p>
 ```
 
+
+
+## Set uncheck foreign key
+
+```php
+DB::statement('SET FOREIGN_KEY_CHECKS=0')
+```
+
