@@ -110,7 +110,7 @@ class AdminUsersController extends Controller {
             unlink(public_path() . "/" . $photo->path);
         }
 
-        session()->flash('deleted_user', $user->name . ' has been deleted');
+        session()->flash('just_delete_thing', $user->name . ' has been deleted');
         return redirect(route('users.index'));
     }
 }

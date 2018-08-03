@@ -2,11 +2,7 @@
 
 @section("content")
 
-    @if (session('deleted_user'))
-        <div class="container">
-            <p class="bg-danger">{{session('deleted_user')}}</p>
-        </div>
-    @endif
+    @include('includes.flash_messages')
 
     <div class="container">
         <table class="table">
@@ -23,7 +19,7 @@
                 <th>results->previousPageUrl()</th>
                 <th>results->total() (Not available when using simplePaginate)</th>
                 <th>results->url(page)</th>
-            </tr>s
+            </tr>
             </thead>
             <tbody>
             <tr>
