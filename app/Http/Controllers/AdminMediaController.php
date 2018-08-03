@@ -76,4 +76,12 @@ class AdminMediaController extends Controller {
         session()->flash('deleted_photo', $photo->path . ' has been deleted');
         return redirect(route('media.index'));
     }
+
+    public function deleteMedia(Request $request) {
+        $photoIds = $request->checkBoxArray;
+
+        Photo::whereIn('id', $photoIds)->delete();
+
+        return redirect(route('media.index'));
+    }
 }
