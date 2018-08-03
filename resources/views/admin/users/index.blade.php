@@ -8,6 +8,41 @@
         </div>
     @endif
 
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>results->count()</th>
+                <th>results->currentPage()</th>
+                <th>results->firstItem()</th>
+                <th>results->hasMorePages()</th>
+                <th>results->lastItem()</th>
+                <th>results->lastPage() (Not available when using simplePaginate)</th>
+                <th>results->nextPageUrl()</th>
+                <th>results->perPage()</th>
+                <th>results->previousPageUrl()</th>
+                <th>results->total() (Not available when using simplePaginate)</th>
+                <th>results->url(page)</th>
+            </tr>s
+            </thead>
+            <tbody>
+            <tr>
+                <td scope="row">{{$users->count()}}</td>
+                <td scope="row">{{$users->currentPage()}}</td>
+                <td scope="row">{{$users->firstItem()}}</td>
+                <td scope="row">{{$users->hasMorePages()}}</td>
+                <td scope="row">{{$users->lastItem()}}</td>
+                <td scope="row">{{$users->lastPage()}}</td>
+                <td scope="row">{{$users->nextPageUrl()}}</td>
+                <td scope="row">{{$users->perPage()}}</td>
+                <td scope="row">{{$users->previousPageUrl()}}</td>
+                <td scope="row">{{$users->total()}}</td>
+                <td scope="row">{{$users->url(1)}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
     @if($users !== null && count($users) > 0)
         <h1>Users</h1>
         <table class="table">
@@ -42,7 +77,7 @@
                 </ul>
             </tbody>
         </table>
-
+        {{ $users->links() }}
     @else
 
         <h1 class="text-center">No users available</h1>

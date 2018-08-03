@@ -30,7 +30,7 @@ class AdminUsersController extends Controller {
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(2);
         return view('admin.users.index', compact('users'));
     }
 
@@ -74,11 +74,14 @@ class AdminUsersController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $user = User::find($id);
-        $roles = Role::pluck('name', 'id')->all();
-        return view('admin.users.edit', compact('user', 'roles'));
+        $userbySlug = User::where('slug', $slug);
+
+        return $userbySlug->id;
+//        $user = User::find(1);
+//        $roles = Role::pluck('name', 'id')->all();
+//        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
