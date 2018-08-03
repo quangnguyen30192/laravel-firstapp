@@ -24,7 +24,7 @@ class AdminUserCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:5',
+            'name' => 'required',
             'email' => 'required|email|max:100',
             'role_id' => 'required',
             'is_active' => 'required',
