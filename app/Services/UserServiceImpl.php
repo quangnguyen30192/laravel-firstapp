@@ -59,5 +59,7 @@ class UserServiceImpl implements UserService {
         }
 
         $user->update($input);
+
+        return $user;
     }
 }
