@@ -48,15 +48,15 @@ Started from Monday - 23 July
 
 ✅  Application - Posts (20/20) 
 
-## Thusday (2 August)
+## ✅  Thusday (2 August)
 
 ✅   Application - Categories (3)
 
 ✅  Application - Media (5)
 
-Application - Comments (20/20)
+✅  Application - Comments (20/20)
 
-Extra features (4)
+✅  Extra features (4)
 
 ## Friday (3 August)
 

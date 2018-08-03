@@ -337,3 +337,16 @@ enableThisOne() {
 }
 ```
 
+
+
+## Database query with eloquent where
+
+```
+App\User::whereSlug('quang-nguyen-ba')->first(); // to get the result
+
+// not this
+App\User::whereSlug('quang-nguyen-ba');
+
+
+```
+
