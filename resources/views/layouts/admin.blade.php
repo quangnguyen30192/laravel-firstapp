@@ -178,7 +178,13 @@
 <script src="{{asset('js/app.js')}}"></script>
 @yield('script')
 
-@yield('footer')
+<footer>
+    <div class="row">
+        <div class="col-lg-12 text-center text-primary">
+            <p>Copyright &copy; qbnn.net {{\Carbon\Carbon::now()->year}}</p>
+        </div>
+    </div>
+</footer>
 </body>
 
 </html>
