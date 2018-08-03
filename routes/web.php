@@ -51,7 +51,10 @@ Route::get('/demo-mutators', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/admin', [
+    'as' => 'admin.index',
+    'uses' => 'AdminController@index'
+]);
 
 Route::get('/admin/user/roles', ['middleware' => 'role', function () {
     return "Middleware role";
@@ -61,7 +64,7 @@ Route::get('/admin/user/roles', ['middleware' => ['role', 'auth', 'web'], functi
     return "Middleware role";
 }]);
 
-Route::get('/admin', 'AdminController@index');
+//Route::get('/admin', 'AdminController@index');
 
 Route::get('/demo-mail', function () {
     Mail::raw('test', function ($message) {
