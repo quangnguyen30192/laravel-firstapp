@@ -1,5 +1,9 @@
 @extends("layouts.admin")
 
+@section('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
 @section("content")
     <h1>Photos</h1>
     @if (session('deleted_photo'))
@@ -10,6 +14,7 @@
     @if($photos)
         <form action="{{route('media.destroy')}}" method="POST" class="form-inline">
             {{csrf_field()}}
+
             {{method_field('delete')}}
 
             <div class="form-group">
