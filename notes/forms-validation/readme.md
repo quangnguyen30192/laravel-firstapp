@@ -39,7 +39,7 @@ public function store(Request $request)
 
 ## CSRF field
 
-if you get a TokenMismatchException/the page has expired due to inactivity -  error then put `{{csrf_field()}}` inside your form below title input
+if you get a TokenMismatchException/the page has expired due to inactivity -  error then put `{{csrf_field()}}`  or just `@csrf`inside your form below title input
 
 `{{csrf_field()}}` would generate the below into your form
 

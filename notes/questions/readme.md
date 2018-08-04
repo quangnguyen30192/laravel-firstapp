@@ -190,4 +190,24 @@ e đưa e lệnh đó vào 1 file shell, sau này chỉ cần chạy docker trư
 
 **Way 3 :=> Use previous version of mysql: 5 or 7.2**
 
-# 
+
+
+### ✅ Difference route and url helper function
+
+- The `route` helper function uses the route name. If you change your URL for some reason in the future, the `route` helper function will reflect that as long as the name of the route remains the same.
+
+- You can also easily pass parameters to the route() helper, making it easy to do URIs like /user/2/edit by doing
+
+  ```
+  route('user.edit', [$user->id])
+  ```
+
+  You cant do that with url() (yes with string concatenation)
+
+- more over, you can treat one as end user facing (url) and other as application facing. You can have as absurd (but convenient) as possible name route
+
+  ```
+  route('my.absurd.route') 
+  ```
+
+  which then translates to /welcome. but with url you don't get this facility.

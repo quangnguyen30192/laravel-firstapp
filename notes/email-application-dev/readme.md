@@ -386,4 +386,3 @@ $.ajaxSetup({
 ```php
 DB::statement('SET FOREIGN_KEY_CHECKS=0')
 ```
-

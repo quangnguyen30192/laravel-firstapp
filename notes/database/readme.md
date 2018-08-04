@@ -76,7 +76,97 @@ Generate dummy data
   php artisan db:seed
   ```
 
+
+
+
+# DB fake factory
+
+To generate Fake data in Laravel 5.5, we will use a super library called Faker, you do not need to download it, it is already included in this version of the framework.
+
+https://github.com/fzaninotto/Faker
+
+In Laravel, creating a script of fake data is called "Factory", let's make our first factory!
+
+## 1 - Open your terminal and create your first factory:
+
+```
+php artisan make:factory UserFactory --model=User
+```
+
+This command will generate a file called:
+
+```
+database/factories/UserFactory.php
+```
+
+## 2 - Open UserFactory.php
+
+And modify this code as needed:
+
+```php
+<?php
+use Faker\Generator as Faker;
+
+$factory->define(App\User::class, function (Faker $faker) {
+    static $password;
+    return [
+        'name' => $faker->firstNameMale,
+        'surname' => $faker->lastName,
+        'email' => $faker->unique()->safeEmail,
+        'password' => $password ?: $password = bcrypt('secret'),
+        'remember_token' => str_random(10),
+        'town_id' => $random = rand(1,115),
+        'activationtoken' => $faker->password,
+
+    ];
+});
+```
+
+You can find a list of variables/functions which are used in the Faker Library [here](https://github.com/fzaninotto/Faker):
+
+## 3 - Testing: use tinker
+
+```
+php artisan tinker
+factory(App\User::class, 10)->create();
+```
+
+## 4 - Apply
+
+* Create a seed file
+
+  ```
+  php artisan make:seed UserDataSeed
+  ```
+
+* Open UserDataSeed
+
+  ```
+  factory(App\User::class, 10)->create();
+  ```
+
+* For create by relationship: e.g you have Post table - Use has many Posts and then you want for every single user created, they have one post belong to
+
+  ```php
+  factory('App\User', 10)->create()->each(function($user) {
+     	$post = factory('App\Post')->make(); // make only create a new model instance, not save into the database while create() does both.
+      $user->posts()->save($post); 
+  });
+  ```
+
+* In case that there is an error related to unlocated name then just refreshing cache
+
+  ```php
+  php artisan clear-compiled
+  composer dump-autoload
+  php artisan optimize
+  ```
+
   
+
+* Then add the UserDataSeed into DatabaseSeed
+
+* Docs: https://laravel.com/docs/5.5/database-testing#using-factories
 
 # Raw SQL queries
 

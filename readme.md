@@ -392,12 +392,15 @@ dump($var);
 composer install;
 
 chmod -R o+rw storage;
-
 composer run post-root-package-install;
-
 composer run post-create-project-cmd;
 
 npm install;
+
+// refreshing cache
+php artisan clear-compiled
+composer dump-autoload
+php artisan optimize
 ```
 
 
