@@ -62,11 +62,11 @@ Started from Monday - 23 July
 
 ✅  Extra features - Laravel data seeding (3)
 
-## Sartuday (4 August)
+## ✅  Sartuday (4 August)
 
-* [Create fake data](https://kollox.com/news.php?read=generating-fake-users-in-laravel-5.5)
+* ✅  [Create fake data](https://kollox.com/news.php?read=generating-fake-users-in-laravel-5.5)
 
-* Testing
+* ✅  Testing
 
   * https://code.tutsplus.com/tutorials/testing-in-laravel--cms-30465
   * https://laracasts.com/series/phpunit-testing-in-laravel 

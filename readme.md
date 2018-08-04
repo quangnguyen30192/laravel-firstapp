@@ -86,6 +86,7 @@ Reference:
 
     ```bash
     mv ~/.composer.phar /usr/local/bin/composer
+    chmod u+x /usr/local/bin/composer
     ```
 
   * `htdocs` folder: Create a project
@@ -412,3 +413,14 @@ php artisan down
 php artisan up
 ```
 
+
+
+# Recommended tools
+
+[Install xdebug](https://github.com/quangnguyen30192/laravel-firstapp/tree/master/notes/install-xdebug) or http://phpdebugbar.com/ or https://tracy.nette.org/en/
+
+https://dev.to/david_j_eddy/5-php-tools-to-make-your-life-more-enjoyable-1jl1
+
+https://www.phpdoc.org/
+
+PHPStorm - Jetbrains

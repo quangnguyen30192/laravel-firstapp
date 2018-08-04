@@ -66,3 +66,19 @@ View
 
 
 #### Docs: https://laravel.com/docs/5.5/pagination
+
+
+
+## Unit testing 
+
+Install phpunit https://phpunit.de/getting-started/phpunit-7.html
+
+https://laravel.com/docs/5.5/testing
+
+https://code.tutsplus.com/tutorials/testing-in-laravel--cms-30465
+
+https://laracasts.com/series/phpunit-testing-in-laravel 
+
+Test Driven Development
+
+https://laravel.com/docs/5.5/testing
