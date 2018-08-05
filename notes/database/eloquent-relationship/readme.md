@@ -59,20 +59,20 @@ public function post()
   }
   ```
 
-  Note that `hasOne()` does not guarantee that you will have one-to-one relationship, it just telling Eloquent how to create query. It works even you have multiple `Company` refer to same `User`, in such case when you call `$user->company` you will get first `Company` in the result data set from database. There are some ways to solve:
+  Note that `hasOne()` does not guarantee that you will have one-to-one relationship, it just telling Eloquent how to create query. It works even you have multiple `Company` refer to same `User`, in such case when you call `$user->company` you will get first `Company` in the result data set from database. There are some ways to solve (also apply for other relationship):
 
-  * Set contrains in company table: e.g a pair user_id & company_id should be unique - to guarantee the data integrity
+  * Set contrains in company table: e.g a pair user_id & company_id (or user_id in case of OneToOne) should be unique - to guarantee the data integrity
   * whenever you add a  company for user: 
     * check that the user already has its own company or not -> if yes then do update
 
-    * or use detach to delele all the records in companies table which has that user_id and the add the company
+    * or use detach (only for pivot table ManyToMany relationship) with purpose is to delele all the records in companies table which has that user_id and the add the company
 
       ```php
       $user->company()->detach();
       $user->company()->save($company);
       ```
 
-    * or use sync:
+    * or use sync (only for pivot table ManyToMany):
 
       ```
       // assume user_id = 1
@@ -103,9 +103,35 @@ public function post()
   $address->save();
   ```
 
+- Associate: update user for address
+
+  `associate()` is used to update a `belongsTo()` relationship and only use for OneToOne relationship.
+
+  `$user->address()` is a `hasOne` relationship class and will not have the associate method on it but `$arress->user()` does
+
+  ```php
+  $user = User::find(1);
+  $address = new Address(['name' => 'Da Nang']);
+  
+  $address->user()->associate($user);
+  $address->save();
+  ```
+
+  It would work if `$address->user()` is a `belongsTo` relationship.
+
   
 
+  To do this the other way round you would first save the user model and then save the address model to it like:
 
+  ```php
+  $user = new User($data);
+  $user->save();
+  
+  $address = new Address(['name' => 'Da nang']);
+  $user->address()->save($address);
+  ```
+
+  So, the rule is quite simple: use the `save()` method when inserting a new record or the `associate()` method in order to update an existing record.
 
 ## One to many
 
