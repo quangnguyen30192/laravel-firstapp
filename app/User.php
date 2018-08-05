@@ -56,6 +56,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Address');
     }
 
+    public function company() {
+        return $this->hasOne('App\Company');
+    }
+
     // accessors and mutators
     public function getNameAttribute($value)
     {

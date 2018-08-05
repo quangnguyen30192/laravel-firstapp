@@ -12,6 +12,7 @@
 */
 
 
+use App\Company;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -89,3 +90,33 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index');
 });
 
+
+Route::get('/test-onetoone-update-company', function () {
+    $company = Company::whereUserId(2)->first();
+
+    if ($company !== null) {
+        $company->update(['name' => 'framss']);
+    } else {
+        $user = User::find(2);
+        $user->company()->save(new Company(['name' => 'fram']));
+    }
+
+    return $company;
+});
+
+
+Route::get('/test-onetoone-associate', function () {
+    $company = Company::whereUserId(2)->first();
+    $company->user()->associate(User::find(3))->save();
+
+    return $company;
+
+});
+
+Route::get('/test-onetoone-associate-2', function () {
+    $company = new Company(['name' => 'new-created-company']);
+    $company->user()->associate(User::find(2))->save();
+
+    return $company;
+
+});
