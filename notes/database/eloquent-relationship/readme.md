@@ -59,7 +59,40 @@ public function post()
   }
   ```
 
-  Note that `hasOne()` does not guarantee that you will have one-to-one relationship, it just telling Eloquent how to create query. It works even you have multiple `Company` refer to same `User`, in such case when you call `$user->company` you will get first `Company` in the result data set from database.
+  Note that `hasOne()` does not guarantee that you will have one-to-one relationship, it just telling Eloquent how to create query. It works even you have multiple `Company` refer to same `User`, in such case when you call `$user->company` you will get first `Company` in the result data set from database. There are some ways to solve:
+
+  * Set contrains in company table: e.g a pair user_id & company_id should be unique - to guarantee the data integrity
+  * whenever you add a  company for user: 
+    * check that the user already has its own company or not -> if yes then do update
+
+    * or use detach to delele all the records in companies table which has that user_id and the add the company
+
+      ```php
+      $user->company()->detach();
+      $user->company()->save($company);
+      ```
+
+    * or use sync:
+
+      ```
+      // assume user_id = 1
+      $user->company()->sync([1]);
+      ```
+
+      this would keep/create a record in companies table which has company == 1 and user == 1 
+
+      and delete the records in the companies table which has company != 1and user == 1 
+
+  - Or let's change from OneToOne to OneToMany (user has many companies) then whenever you get the company of the user - just get the latest one:
+
+    This is more flexible because you can have history of the companies that user has been working for
+
+    ```php
+    $user->companies()->latest();
+    Company::whereUserId($user->id)->first();
+    ```
+
+    
 
 - Update
 

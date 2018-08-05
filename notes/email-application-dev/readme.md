@@ -299,6 +299,7 @@ E.g: when you delete a user and the records in Post table which has that user_id
 Post table: migration file
 
 ```php
+// if a user gets deleted then user's posts would be deleted as well
 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
 if user->id is as increment (integer, unsigned) 
@@ -386,3 +387,21 @@ $.ajaxSetup({
 ```php
 DB::statement('SET FOREIGN_KEY_CHECKS=0')
 ```
+
+
+
+## Example of database migration creation  - create primary key by group of ids, references
+
+```php
+Schema::create('matchup_team', function (Blueprint $table) {
+    $table->string('matchup_id')->index();
+    // when a matchup gets deleted then the rows in matchup_team table also get deleted as well
+    $table->foreign('matchup_id')->references('matchup_id')->on('matchups')->onDelete('cascade');
+    $table->integer('team_id')->unsigned()->index();
+    $table->foreign('team_id')->references('team_id')->on('teams')->onDelete('cascade');
+    $table->string('role');
+    $table->tinyInteger('score')->unsigned()->nullable();
+    $table->primary(['matchup_id', 'team_id']);
+});
+```
+
