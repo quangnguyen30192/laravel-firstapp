@@ -113,7 +113,7 @@ public function post()
   $user = User::find(1);
   $address = new Address(['name' => 'Da Nang']);
   
-  $address->user()->associate($user);
+  $address->user()->associate($user); // $user has to be existing first
   $address->save();
   ```
 
@@ -127,11 +127,15 @@ public function post()
   $user = new User($data);
   $user->save();
   
-  $address = new Address(['name' => 'Da nang']);
+  $address = new Address(['name' => 'Da nang']); // new address would be created
+  
+  // update address set user_id = ? where id = 1
+  // $address = Address::find(1);
+  
   $user->address()->save($address);
   ```
 
-  So, the rule is quite simple: use the `save()` method when inserting a new record or the `associate()` method in order to update an existing record.
+  
 
 ## One to many
 
@@ -524,4 +528,42 @@ $user->roles()->sync([1,2,3]); there would be 3 records in pivot table (user_id=
 
 
 ## Docs https://laravel.com/docs/5.5/eloquent-relationships
+
+
+
+## Little Summary
+
+```php
+ * hasOne / hasMany (1-1, 1-M)
+    -save(new or existing child)
+    -saveMany(array of models new or existing)
+    -create(array of attributes)
+    -createMany(array of arrays of attributes)
+    ---------------------------------------------------------------------------
+
+ * belongsTo (M-1, 1-1)
+    -associate(existing model)
+    ---------------------------------------------------------------------------
+
+ *  belongsToMany (M-M)
+    -save(new or existing model, array of pivot data, touch parent = true)
+    -saveMany(array of new or existing model, array of arrays with pivot ata)
+    -create(attributes, array of pivot data, touch parent = true)
+    -createMany(array of arrays of attributes, array of arrays with pivot data)
+    -attach(existing model / id, array of pivot data, touch parent = true)
+    -sync(array of ids OR ids as keys and array of pivot data as values, detach = true)
+    -updateExistingPivot(relatedId, array of pivot data, touch)
+    ---------------------------------------------------------------------------
+
+ *  morphTo (polymorphic M-1)
+    // the same as belongsTo
+    ---------------------------------------------------------------------------
+
+ *  morphOne / morphMany (polymorphic 1-M)
+    // the same as hasOne / hasMany
+    ---------------------------------------------------------------------------
+
+ *  morphedToMany /morphedByMany (polymorphic M-M)
+    // the same as belongsToMany
+```
 
