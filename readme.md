@@ -26,7 +26,9 @@ Reference:
 
 - [Laravel 5.5 - Collection](https://github.com/laravel/framework/blob/5.5/src/Illuminate/Support/Collection.php#L394)
 
-- [Laravel best practice - 1](http://www.laravelbestpractices.com/) 
+- [Laravel best practice - 1](http://www.laravelbestpractices.com/)
+
+- https://viblo.asia/p/laravel-beauty-recipes-best-practices-6BAMYk9Evnjz 
 
 - [Laravel best practice - 2](https://github.com/alexeymezenin/laravel-best-practices)
 
@@ -42,6 +44,8 @@ Reference:
 
   - https://laravel-news.com/eloquent-tips-tricks
 
+  - https://chungnguyen.xyz/posts/code-laravel-lam-sao-cho-chuan
+
      
 
 # Lavarel MVC
@@ -52,7 +56,6 @@ Reference:
 
 * Controller: Middle-Man
 
-  
 
 # Environment Setup
 
@@ -149,17 +152,11 @@ Reference:
     </VirtualHost>
     ```
 
-    
-
   - vim /etc/hosts
 
     ```
     127.0.0.1	laravelfistapp.dev
     ```
-
-    
-
-  
 
 - How to fix common errors ?
 
@@ -179,7 +176,7 @@ Reference:
 
   - Your connection is private on Chrome ?
 
-    use FireFox
+    use FireFox - or create host name without ending with `dev`
 
   - Got forbidden access ?
 
@@ -388,16 +385,16 @@ dump($var);
 
 * Docs: https://laravel.com/docs/5.5/blade
 
-# Setup project
+# Setup project clone from git
 
 ```bash
-composer install;
-
+composer install && composer update;
 chmod -R o+rw storage;
 composer run post-root-package-install;
 composer run post-create-project-cmd;
 
 npm install;
+npm run dev;
 
 // refreshing cache
 php artisan clear-compiled

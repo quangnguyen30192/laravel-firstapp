@@ -1,4 +1,10 @@
-### Install xdebug
+# install automatically
+
+## Prerequisites 
+
+ apple command line tool
+
+## Install xdebug
 
 ```
 pecl install xdebug
@@ -6,7 +12,18 @@ pecl install xdebug
 
 
 
-### check xdebug running:
+this will create `xdebug.so` file
+
+```bash
+Build process completed successfully
+Installing '/usr/local/Cellar/php/7.2.9_2/pecl/20170718/xdebug.so'
+install ok: channel://pecl.php.net/xdebug-2.6.1
+Extension xdebug enabled in php.ini
+```
+
+
+
+## check xdebug running:
 
 ```
 php -m | grep xdebug
@@ -14,12 +31,12 @@ php -m | grep xdebug
 
 
 
-### Update php.ini
+## Update php.ini within xdebug.so
 
-Open `php.ini` file (phpinfo()): normally at `xamppfiles/etc/php.ini` and add the below
+Open `php.ini` file ( where you can get from phpinfo()): normally at `/etc/php.ini` in your server and add the below
 
 ```properties
-zend_extension="/Users/qnguyen/Downloads/xdebug/modules/xdebug.so"
+zend_extension="/linkTo/xdebug.so"
 
 xdebug.remote_enable=1
 
@@ -40,15 +57,9 @@ xdebug.idkey=PHPSTORM
 
 
 
-### Download xdebug modules and update zend_extension in php.ini
+# install manually
 
-Download xdebug modules: https://xdebug.org/docs/install 
-
-#### Installation on Mac OS X
-
-PHP is available from the unofficial Mac OS X package manager [Homebrew](http://brew.sh/). Homebrew recommend using PECL to install Xdebug, so please follow the instructions above for [installing via PECL](https://xdebug.org/docs/install#pecl).
-
-#### Installation From Source
+ https://xdebug.org/docs/install 
 
 You can [download](https://xdebug.org/download.php#releases) the source of the latest **stable** release 2.6.0. Alternatively you can obtain Xdebug from GIT:
 
@@ -56,33 +67,48 @@ You can [download](https://xdebug.org/download.php#releases) the source of the l
 git clone git://github.com/xdebug/xdebug.git
 ```
 
-This will checkout the latest development version which is currently 2.7.0alpha1. You can also browse the source at <https://github.com/derickr/xdebug>.
+## Compiling
 
-#### Compiling
+## Prerequisites
 
-There is a [wizard](https://xdebug.org/wizard.php) available that provides you with the correct file to download, and which paths to use.
+phpize
 
-You compile Xdebug separately from the rest of PHP. Note, however, that you need access to the scripts 'phpize' and 'php-config'. If your system does not have 'phpize' and 'php-config', you will need to compile and install PHP from a source tarball first, as these script are by-products of the PHP compilation and installation processes. (Debian users can install the required tools with `apt-get install php5-dev`). It is important that the source version matches the installed version as there are slight, but important, differences between PHP versions. Once you have access to 'phpize' and 'php-config', do the following:
+## making xdebug.so
 
-1. Unpack the tarball: tar -xzf xdebug-2.6.0.tgz. Note that you do not need to unpack the tarball inside the PHP source code tree. Xdebug is compiled separately, all by itself, as stated above.
-2. cd xdebug-2.6.0
-3. Run phpize: phpize (or /path/to/phpize if phpize is not in your path). Make sure you use the phpize that belongs to the PHP version that you want to use Xdebug with. See this [FAQ entry](https://xdebug.org/docs/faq#api) if you're having some issues with finding which phpize to use.
-4. ./configure --enable-xdebug
-5. make
-6. make install
+1. Go to the root of folder you've downloaded `cd xdebug` 
 
-### Configure PHP to Use Xdebug
+   ```bash
+   cd xdebug
+   ```
 
-1. add the following line to php.ini: zend_extension="/wherever/you/put/it/xdebug.so". For PHP versions earlier than 5.3 **and** threaded usage of PHP (Apache 2 worker MPM or the ISAPI module), add: zend_extension_ts="/wherever/you/put/it/xdebug.so" instead. **Note:** In case you compiled PHP yourself and used --enable-debug you would have to use zend_extension_debug=. **Note:** If you want to use Xdebug and OPCache together, you must load Xdebug after OPCache. Otherwise, they won't work properly. **From PHP 5.3 onwards, you always need to use the zend_extension PHP.ini setting name, and not zend_extension_ts, nor zend_extension_debug. However, your compile options (ZTS/normal build; debug/non-debug) still need to match with what PHP is using.**
-2. Restart your webserver.
-3. Write a PHP page that calls '*phpinfo()*' Load it in a browser and look for the info on the Xdebug module. If you see it next to the Zend logo, you have been successful! You can also use 'php -m' if you have a command line version of PHP, it lists all loaded modules. Xdebug should appear twice there (once under 'PHP Modules' and once under 'Zend Modules').
+2. Run `phpize` to create `configure` file
+
+   ```bash
+   sudo phpize
+   ```
+
+3. Enable xdebug
+
+   ```bash
+   ./configure
+   ./configure --enable-xdebug
+   ```
+
+4. Run make
+
+5. Run make install
+
+6. Get `xdebug.so` at `./modules/xdebug.so`
 
 
 
-* update zend_extension=/Users/qnguyen/Downloads/xdebug/modules/xdebug.so is in `modules` folder after extracted
+## Update php.ini within xdebug.so as auto approach
 
 
 
-### Configure phpstorm
+## Restart your webserver and check we have xdebug from phpinfo()
+
+# Configure phpstorm
 
 <http://laravelforbeginners.com/understanding-phpstorm-xdebug-2-ways-debug-laravel-app/>
+

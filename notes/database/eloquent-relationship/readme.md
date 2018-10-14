@@ -92,7 +92,6 @@ public function post()
     Company::whereUserId($user->id)->first();
     ```
 
-    
 
 - Update
 
@@ -107,7 +106,7 @@ public function post()
 
   `associate()` is used to update a `belongsTo()` relationship and only use for OneToOne relationship.
 
-  `$user->address()` is a `hasOne` relationship class and will not have the associate method on it but `$arress->user()` does
+  `$user->address()` is a `hasOne` relationship class and will not have the associate method on it but `$arress->user()` does
 
   ```php
   $user = User::find(1);
@@ -119,7 +118,7 @@ public function post()
 
   It would work if `$address->user()` is a `belongsTo` relationship.
 
-  
+
 
   To do this the other way round you would first save the user model and then save the address model to it like:
 
@@ -135,7 +134,6 @@ public function post()
   $user->address()->save($address);
   ```
 
-  
 
 ## One to many
 
@@ -199,7 +197,7 @@ public function user()
 
   * Users and roles has many to many relationship
 
-  - Laravel's naming convention for pivot tables is singularized table names in alphabetical order separated by an underscore. So, if one table is `users`, and the other table is `roles`, the pivot table will be `role_user`, join columns will be `user_id` and `role_id`
+  - Laravel's naming convention for pivot tables is singularized table names in alphabetical order separated by an underscore. So, if one table is `users`, and the other table is `roles`, the pivot table will be `role_user`, join columns will be `user_id` and `role_id`
   - Alphabet: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 
   
@@ -261,8 +259,6 @@ public function user()
     Role::find($id)->users;
     ```
 
-    
-
 - Access pivot table
 
   - Pivot table has name role_user
@@ -290,7 +286,6 @@ public function user()
   
   ```
 
-  
 
 ## Has many through
 
@@ -533,37 +528,39 @@ $user->roles()->sync([1,2,3]); there would be 3 records in pivot table (user_id=
 
 ## Little Summary
 
-```php
  * hasOne / hasMany (1-1, 1-M)
-    -save(new or existing child)
-    -saveMany(array of models new or existing)
-    -create(array of attributes)
-    -createMany(array of arrays of attributes)
+    - save(new or existing child)
+    - saveMany(array of models new or existing)
+    - create(array of attributes)
+    - createMany(array of arrays of attributes)
+
     ---------------------------------------------------------------------------
 
  * belongsTo (M-1, 1-1)
-    -associate(existing model)
+    - associate(existing model)
+
     ---------------------------------------------------------------------------
 
  *  belongsToMany (M-M)
-    -save(new or existing model, array of pivot data, touch parent = true)
-    -saveMany(array of new or existing model, array of arrays with pivot ata)
-    -create(attributes, array of pivot data, touch parent = true)
-    -createMany(array of arrays of attributes, array of arrays with pivot data)
-    -attach(existing model / id, array of pivot data, touch parent = true)
-    -sync(array of ids OR ids as keys and array of pivot data as values, detach = true)
-    -updateExistingPivot(relatedId, array of pivot data, touch)
+    - save(new or existing model, array of pivot data, touch parent = true)
+    - saveMany(array of new or existing model, array of arrays with pivot ata)
+    - create(attributes, array of pivot data, touch parent = true)
+    - createMany(array of arrays of attributes, array of arrays with pivot data)
+    - attach(existing model / id, array of pivot data, touch parent = true)
+    - sync(array of ids OR ids as keys and array of pivot data as values, detach = true)
+    - updateExistingPivot(relatedId, array of pivot data, touch)
+
     ---------------------------------------------------------------------------
 
  *  morphTo (polymorphic M-1)
-    // the same as belongsTo
-    ---------------------------------------------------------------------------
+
+    // the same as belong to
 
  *  morphOne / morphMany (polymorphic 1-M)
+
     // the same as hasOne / hasMany
-    ---------------------------------------------------------------------------
 
  *  morphedToMany /morphedByMany (polymorphic M-M)
+
     // the same as belongsToMany
-```
 
